@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://camera-kaitori-deploy.pages.dev/sitemap.xml
+Sitemap: https://camera-sell.com/sitemap.xml
