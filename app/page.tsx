@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { categories, companies, kaitoriCompanies, makers, platformCompanies } from "@/lib/companies";
+import { categories, companies, kaitoriCompanies, makers, mounts, platformCompanies } from "@/lib/companies";
 import { CHECKED_LABEL, SITE_NAME, SITE_TAGLINE } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -162,6 +162,32 @@ export default function HomePage() {
                 <Link
                   href={m.path}
                   className="group block h-full border border-chalk-line bg-chalk-card p-6 transition-colors hover:border-vermilion"
+                >
+                  <h3 className="font-display text-lg text-steel-900 group-hover:text-vermilion">
+                    {m.name}
+                  </h3>
+                  <p className="mt-3 text-[13px] leading-relaxed text-steel-600">{m.lead}</p>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* マウント別導線 */}
+      <section className="border-t border-chalk-line bg-chalk-card">
+        <div className="mx-auto max-w-site px-4 py-16 md:py-20">
+          <p className="kicker mb-3">BY MOUNT</p>
+          <h2 className="section-title mb-4">マウント別に、レンズの規格から整理する</h2>
+          <p className="mb-10 max-w-2xl text-sm leading-loose text-steel-600">
+            レンズは、どのメーカーの製品かと同じくらい「どの取り付け規格か」で扱いが変わります。ねじ込み式かバヨネットか、フランジバックが長いか短いか、連動が機械式か電子式か。掲載サービスの公式サイトにはマウント別の買取可否は記載されていないため、当サイトでは「どの会社がどのマウントを買い取るか」は扱わず、申告のために確認しておく規格そのものの一般知識を整理しています。
+          </p>
+          <ul className="grid gap-4 md:grid-cols-2">
+            {mounts.map((m) => (
+              <li key={m.slug}>
+                <Link
+                  href={m.path}
+                  className="group block h-full border border-chalk-line bg-chalk p-6 transition-colors hover:border-vermilion"
                 >
                   <h3 className="font-display text-lg text-steel-900 group-hover:text-vermilion">
                     {m.name}

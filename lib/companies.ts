@@ -215,3 +215,50 @@ export function getMaker(slug: string): Category {
   if (!m) throw new Error(`maker not found: ${slug}`);
   return m;
 }
+
+/**
+ * マウント別ハブ（/mount/<slug>/）。
+ * makers と同じ扱いで、categories 配列には混ぜない。
+ * data/companies.json にマウント別の買取対応データは存在しないため、
+ * マウントによって掲載社を出し分けない（companySlugs は全マウント共通）。
+ */
+export const mounts: Category[] = [
+  {
+    slug: "m42",
+    path: "/mount/m42/",
+    name: "M42マウントのレンズ買取",
+    short: "M42マウント",
+    lead: "ねじ込み式のスクリューマウント。バヨネットとの見分け方、絞りピンの確認、アダプター事情と、売るときに伝えておく項目を整理しました。",
+    companySlugs: ["uriel", "camera-kaitoriyasan", "arrows"],
+  },
+  {
+    slug: "leica-m",
+    path: "/mount/leica-m/",
+    name: "ライカMマウントのレンズ買取",
+    short: "ライカMマウント",
+    lead: "距離計連動のバヨネット規格。Lマウント（スクリュー）との関係、連動カムの確認、付属品の探し方をまとめました。",
+    companySlugs: ["uriel", "camera-kaitoriyasan", "arrows"],
+  },
+  {
+    slug: "micro-four-thirds",
+    path: "/mount/micro-four-thirds/",
+    name: "マイクロフォーサーズのレンズ買取",
+    short: "マイクロフォーサーズ",
+    lead: "複数社が共有するミラーレス用の規格。フォーサーズとの違い、電子接点まわりの確認、アダプター母艦としての性格を整理しました。",
+    companySlugs: ["uriel", "camera-kaitoriyasan", "arrows"],
+  },
+  {
+    slug: "f-mount",
+    path: "/mount/f-mount/",
+    name: "ニコンFマウントのレンズ買取",
+    short: "ニコンFマウント",
+    lead: "長期間使われた一眼レフ用バヨネット。連動方式が機械式から電子式へ変わった規格そのものの特徴と、伝えるべき項目をまとめました。",
+    companySlugs: ["uriel", "camera-kaitoriyasan", "arrows"],
+  },
+];
+
+export function getMount(slug: string): Category {
+  const m = mounts.find((x) => x.slug === slug);
+  if (!m) throw new Error(`mount not found: ${slug}`);
+  return m;
+}

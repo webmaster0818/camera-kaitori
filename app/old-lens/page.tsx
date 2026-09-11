@@ -68,6 +68,10 @@ export default function OldLensPage() {
         { href: "/guide/uru-mae/", label: "売る前の準備", desc: "付属品・状態申告・梱包のコツ" },
         { href: "/situation/tairyou/", label: "大量・コレクションを売る", desc: "リスト化と出張・宅配の使い分け" },
         { href: "/guide/erabikata/", label: "専門店・総合・出張の使い分け", desc: "カメラ買取はどこがいい？" },
+        { href: "/mount/m42/", label: "M42マウントのレンズ買取", desc: "ねじ込み式スクリューマウントの見分け方" },
+        { href: "/mount/leica-m/", label: "ライカMマウントのレンズ買取", desc: "距離計連動バヨネットの確認項目" },
+        { href: "/mount/micro-four-thirds/", label: "マイクロフォーサーズのレンズ買取", desc: "フォーサーズとの違いと電子接点" },
+        { href: "/mount/f-mount/", label: "ニコンFマウントのレンズ買取", desc: "一眼レフ用バヨネットの仕様の幅" },
       ]}
     />
   );
