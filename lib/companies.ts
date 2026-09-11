@@ -98,7 +98,7 @@ export const categories: Category[] = [
     name: "フィルムカメラの買取",
     short: "フィルムカメラ",
     lead: "一眼レフ・レンジファインダー・二眼レフ・中判。動作未確認でも価値判断の対象になるフィルムカメラの見分け方と、対応業者の条件を一次確認で整理しました。",
-    companySlugs: ["uriel", "camera-kaitoriyasan", "arrows"],
+    companySlugs: ["uriel", "camera-kaitoriyasan", "arrows", "kitamura", "fujiya", "naniwa", "daikokuya", "janpara"],
   },
   {
     slug: "old-lens",
@@ -106,7 +106,7 @@ export const categories: Category[] = [
     name: "オールドレンズの買取",
     short: "オールドレンズ",
     lead: "マウント・焦点距離・明るさで評価が分かれるオールドレンズ。カビ・くもりの申告のしかたと、レンズ単体を受け付ける業者の条件をまとめました。",
-    companySlugs: ["uriel", "camera-kaitoriyasan", "arrows"],
+    companySlugs: ["uriel", "camera-kaitoriyasan", "arrows", "kitamura", "fujiya", "naniwa", "daikokuya"],
   },
   {
     slug: "digital",
@@ -114,7 +114,7 @@ export const categories: Category[] = [
     name: "デジタル一眼・ミラーレスの買取",
     short: "デジタル",
     lead: "現行機・型落ち機は相場の動きが速いカテゴリです。シャッター回数・付属品・データ削除など売る前の準備と、宅配買取の条件を整理しました。",
-    companySlugs: ["camera-kaitoriyasan", "arrows", "uriel"],
+    companySlugs: ["camera-kaitoriyasan", "arrows", "uriel", "kitamura", "fujiya", "naniwa", "daikokuya", "janpara", "rakuuru", "camera-takakuureru"],
   },
   {
     slug: "broken",
@@ -122,7 +122,7 @@ export const categories: Category[] = [
     name: "壊れた・ジャンク・カビありを売る",
     short: "壊れた・ジャンク",
     lead: "動かないカメラ、カビやくもりのあるレンズも、部品取りや修理前提で査定対象になる場合があります。0円回避のための申告のコツと、故障品受付を公式に明記する業者を整理しました。",
-    companySlugs: ["camera-kaitoriyasan", "uriel"],
+    companySlugs: ["camera-kaitoriyasan", "uriel", "daikokuya", "camera-takakuureru"],
   },
 ];
 
