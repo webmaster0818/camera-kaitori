@@ -167,3 +167,51 @@ export function companyFaq(c: Company): { q: string; a: string }[] {
     },
   ];
 }
+
+/**
+ * メーカー別ハブ（/maker/<slug>/）。
+ * 既存のカテゴリ（film / old-lens / digital / broken）とは別配列で管理し、
+ * categories 配列には混ぜない（既存ページの導線を変えないため）。
+ * companySlugs は全メーカー共通。data/companies.json にメーカー別の
+ * 買取対応データは存在しないため、メーカーによって掲載社を出し分けない。
+ */
+export const makers: Category[] = [
+  {
+    slug: "canon",
+    path: "/maker/canon/",
+    name: "キヤノンのカメラ買取",
+    short: "キヤノン",
+    lead: "FDマウントのフィルム機からEF・RFマウントのデジタル機まで。世代とマウントの見分け方、売る前に確認しておく項目を整理しました。",
+    companySlugs: ["uriel", "camera-kaitoriyasan", "arrows"],
+  },
+  {
+    slug: "nikon",
+    path: "/maker/nikon/",
+    name: "ニコンのカメラ買取",
+    short: "ニコン",
+    lead: "長く続いたFマウントとミラーレスのZマウント。レンズの世代表記（Ai・AF-S・G・E）の読み方と、売る前の確認項目をまとめました。",
+    companySlugs: ["uriel", "camera-kaitoriyasan", "arrows"],
+  },
+  {
+    slug: "sony",
+    path: "/maker/sony/",
+    name: "ソニーのカメラ買取",
+    short: "ソニー",
+    lead: "Eマウントのミラーレスとミノルタ由来のAマウント。世代交代が速いデジタル機を売る前に確認しておきたい項目を整理しました。",
+    companySlugs: ["uriel", "camera-kaitoriyasan", "arrows"],
+  },
+  {
+    slug: "fujifilm",
+    path: "/maker/fujifilm/",
+    name: "富士フイルムのカメラ買取",
+    short: "富士フイルム",
+    lead: "XマウントのミラーレスとGFXシリーズ、そして中判フィルム機まで。レンズ一体型機の扱いを含めた確認項目をまとめました。",
+    companySlugs: ["uriel", "camera-kaitoriyasan", "arrows"],
+  },
+];
+
+export function getMaker(slug: string): Category {
+  const m = makers.find((x) => x.slug === slug);
+  if (!m) throw new Error(`maker not found: ${slug}`);
+  return m;
+}

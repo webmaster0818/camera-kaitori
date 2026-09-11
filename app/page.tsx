@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { categories, companies, kaitoriCompanies, platformCompanies } from "@/lib/companies";
+import { categories, companies, kaitoriCompanies, makers, platformCompanies } from "@/lib/companies";
 import { CHECKED_LABEL, SITE_NAME, SITE_TAGLINE } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -145,6 +145,32 @@ export default function HomePage() {
               売り方診断へ
             </Link>
           </div>
+        </div>
+      </section>
+
+      {/* メーカー別導線 */}
+      <section className="border-t border-chalk-line bg-chalk">
+        <div className="mx-auto max-w-site px-4 py-16 md:py-20">
+          <p className="kicker mb-3">BY MAKER</p>
+          <h2 className="section-title mb-4">メーカー別に、確認することから整理する</h2>
+          <p className="mb-10 max-w-2xl text-sm leading-loose text-steel-600">
+            メーカーごとにマウントの規格や世代の考え方が異なり、売る前に確認しておく項目も変わります。掲載サービスの公式サイトにはメーカー別の買取可否は記載されていないため、当サイトでは「どの会社がどのメーカーを買い取るか」は扱わず、申告のために確認しておく一般的な項目を整理しています。
+          </p>
+          <ul className="grid gap-4 md:grid-cols-2">
+            {makers.map((m) => (
+              <li key={m.slug}>
+                <Link
+                  href={m.path}
+                  className="group block h-full border border-chalk-line bg-chalk-card p-6 transition-colors hover:border-vermilion"
+                >
+                  <h3 className="font-display text-lg text-steel-900 group-hover:text-vermilion">
+                    {m.name}
+                  </h3>
+                  <p className="mt-3 text-[13px] leading-relaxed text-steel-600">{m.lead}</p>
+                </Link>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 
