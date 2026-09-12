@@ -276,6 +276,10 @@ export default function IhinSituationPage() {
           <p className="mt-3 text-xs text-steel-500">
             ※ 相続や遺産分割に関する記述は一般的な考え方の整理であり、法的助言ではありません。個別の事情については弁護士・司法書士などの専門家にご相談ください。
           </p>
+          <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+            <Link href="/situation/koujin-film-data/" className="btn-primary">故人のフィルム・データの扱いを詳しく見る</Link>
+            <Link href="/situation/katami-camera/" className="btn-ghost">形見として残すか手放すかの決め方を見る</Link>
+          </div>
         </section>
 
         {/* 仕分けの手順 */}
@@ -396,6 +400,24 @@ export default function IhinSituationPage() {
         <section className="mt-14">
           <h2 className="section-title mb-6">関連ページ</h2>
           <ul className="grid gap-3 text-sm md:grid-cols-2">
+            <li>
+              <Link href="/situation/katami-camera/" className="block border border-chalk-line bg-chalk-card px-4 py-4 hover:border-vermilion">
+                <span className="font-display text-steel-900">形見のカメラを残すか手放すか</span>
+                <span className="mt-1 block text-xs text-steel-500">使う・保管する・手放すの決め方と手入れ</span>
+              </Link>
+            </li>
+            <li>
+              <Link href="/situation/koujin-film-data/" className="block border border-chalk-line bg-chalk-card px-4 py-4 hover:border-vermilion">
+                <span className="font-display text-steel-900">故人のフィルム・メモリーカード・写真データ</span>
+                <span className="mt-1 block text-xs text-steel-500">未現像フィルムとデータの取り出し方</span>
+              </Link>
+            </li>
+            <li>
+              <Link href="/situation/boushitsuko-seiri/" className="block border border-chalk-line bg-chalk-card px-4 py-4 hover:border-vermilion">
+                <span className="font-display text-steel-900">防湿庫・カメラバッグごと出てきた機材の整理</span>
+                <span className="mt-1 block text-xs text-steel-500">収納ごとの仕分けとカビの見分け方</span>
+              </Link>
+            </li>
             <li>
               <Link href="/situation/tairyou/" className="block border border-chalk-line bg-chalk-card px-4 py-4 hover:border-vermilion">
                 <span className="font-display text-steel-900">カメラ・レンズを大量に売るには</span>

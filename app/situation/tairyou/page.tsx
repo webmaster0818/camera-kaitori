@@ -271,6 +271,13 @@ export default function TairyouSituationPage() {
               </tbody>
             </table>
           </div>
+          <p className="mt-3 text-xs text-steel-500">
+            ※ 防湿庫やカメラバッグごと、収納ごとまとまって出てきた場合は、まず仕分けと状態確認から始めます。手順は収納ごと整理のページにまとめています。
+          </p>
+          <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+            <Link href="/situation/boushitsuko-seiri/" className="btn-primary">防湿庫・バッグごとの仕分け手順を見る</Link>
+            <Link href="/situation/koujin-film-data/" className="btn-ghost">フィルム・データの扱いを見る</Link>
+          </div>
         </section>
 
         {/* 一括か小分けか */}
@@ -442,6 +449,24 @@ export default function TairyouSituationPage() {
               <Link href="/situation/ihin/" className="block border border-chalk-line bg-chalk-card px-4 py-4 hover:border-vermilion">
                 <span className="font-display text-steel-900">遺品・実家整理で出てきたカメラを売るには</span>
                 <span className="mt-1 block text-xs text-steel-500">捨てる前の確認点と出張買取の使い方</span>
+              </Link>
+            </li>
+            <li>
+              <Link href="/situation/boushitsuko-seiri/" className="block border border-chalk-line bg-chalk-card px-4 py-4 hover:border-vermilion">
+                <span className="font-display text-steel-900">防湿庫・カメラバッグごと出てきた機材の整理</span>
+                <span className="mt-1 block text-xs text-steel-500">収納ごとの仕分けとカビの見分け方</span>
+              </Link>
+            </li>
+            <li>
+              <Link href="/situation/koujin-film-data/" className="block border border-chalk-line bg-chalk-card px-4 py-4 hover:border-vermilion">
+                <span className="font-display text-steel-900">故人のフィルム・メモリーカード・写真データ</span>
+                <span className="mt-1 block text-xs text-steel-500">未現像フィルムとデータの取り出し方</span>
+              </Link>
+            </li>
+            <li>
+              <Link href="/situation/katami-camera/" className="block border border-chalk-line bg-chalk-card px-4 py-4 hover:border-vermilion">
+                <span className="font-display text-steel-900">形見のカメラを残すか手放すか</span>
+                <span className="mt-1 block text-xs text-steel-500">使う・保管する・手放すの決め方と手入れ</span>
               </Link>
             </li>
             <li>
