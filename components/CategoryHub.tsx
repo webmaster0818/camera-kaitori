@@ -7,8 +7,9 @@ import {
   categories,
   getCompany,
   platformCompanies,
+  checkedLabelAll,
 } from "@/lib/companies";
-import { CHECKED_LABEL } from "@/lib/site";
+
 
 export interface HubSectionItem {
   t: string;
@@ -83,7 +84,7 @@ export default function CategoryHub({
         <section className="mt-14">
           <h2 className="section-title mb-2">このカテゴリで掲載中の買取サービス</h2>
           <p className="mb-6 text-sm leading-loose text-steel-600">
-            各社の条件は公式サイトを一次確認したものです（確認日: {CHECKED_LABEL}）。「公式では確認できず」の項目は、公式サイト上に記載を発見できなかったことを意味します。買取価格は日々変動するため、必ず各社公式サイトの最新表示をご確認ください。
+            各社の条件は公式サイトを一次確認したものです（確認日: {checkedLabelAll()}）。「公式では確認できず」の項目は、公式サイト上に記載を発見できなかったことを意味します。買取価格は日々変動するため、必ず各社公式サイトの最新表示をご確認ください。
           </p>
           {hubCompanies.length > 0 ? (
             <div className="grid gap-5 lg:grid-cols-2">

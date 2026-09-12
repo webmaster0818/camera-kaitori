@@ -174,6 +174,10 @@ export function companyFaq(c: Company): { q: string; a: string }[] {
  * categories 配列には混ぜない（既存ページの導線を変えないため）。
  * companySlugs は全メーカー共通。data/companies.json にメーカー別の
  * 買取対応データは存在しないため、メーカーによって掲載社を出し分けない。
+ * 収録対象は kind: "kaitori"（買取直販）かつ target にカメラ本体または
+ * レンズの買取記載がある社（確認日時点で10社すべてが該当）。
+ * kind: "platform" は既存カテゴリと同様に companySlugs には含めず、
+ * CategoryHub 側の一括査定セクションで別枠表示する。
  */
 export const makers: Category[] = [
   {
@@ -182,7 +186,7 @@ export const makers: Category[] = [
     name: "キヤノンのカメラ買取",
     short: "キヤノン",
     lead: "FDマウントのフィルム機からEF・RFマウントのデジタル機まで。世代とマウントの見分け方、売る前に確認しておく項目を整理しました。",
-    companySlugs: ["uriel", "camera-kaitoriyasan", "arrows"],
+    companySlugs: ["uriel", "camera-kaitoriyasan", "arrows", "kitamura", "fujiya", "naniwa", "daikokuya", "janpara", "rakuuru", "camera-takakuureru"],
   },
   {
     slug: "nikon",
@@ -190,7 +194,7 @@ export const makers: Category[] = [
     name: "ニコンのカメラ買取",
     short: "ニコン",
     lead: "長く続いたFマウントとミラーレスのZマウント。レンズの世代表記（Ai・AF-S・G・E）の読み方と、売る前の確認項目をまとめました。",
-    companySlugs: ["uriel", "camera-kaitoriyasan", "arrows"],
+    companySlugs: ["uriel", "camera-kaitoriyasan", "arrows", "kitamura", "fujiya", "naniwa", "daikokuya", "janpara", "rakuuru", "camera-takakuureru"],
   },
   {
     slug: "sony",
@@ -198,7 +202,7 @@ export const makers: Category[] = [
     name: "ソニーのカメラ買取",
     short: "ソニー",
     lead: "Eマウントのミラーレスとミノルタ由来のAマウント。世代交代が速いデジタル機を売る前に確認しておきたい項目を整理しました。",
-    companySlugs: ["uriel", "camera-kaitoriyasan", "arrows"],
+    companySlugs: ["uriel", "camera-kaitoriyasan", "arrows", "kitamura", "fujiya", "naniwa", "daikokuya", "janpara", "rakuuru", "camera-takakuureru"],
   },
   {
     slug: "fujifilm",
@@ -206,7 +210,7 @@ export const makers: Category[] = [
     name: "富士フイルムのカメラ買取",
     short: "富士フイルム",
     lead: "XマウントのミラーレスとGFXシリーズ、そして中判フィルム機まで。レンズ一体型機の扱いを含めた確認項目をまとめました。",
-    companySlugs: ["uriel", "camera-kaitoriyasan", "arrows"],
+    companySlugs: ["uriel", "camera-kaitoriyasan", "arrows", "kitamura", "fujiya", "naniwa", "daikokuya", "janpara", "rakuuru", "camera-takakuureru"],
   },
 ];
 
@@ -221,6 +225,8 @@ export function getMaker(slug: string): Category {
  * makers と同じ扱いで、categories 配列には混ぜない。
  * data/companies.json にマウント別の買取対応データは存在しないため、
  * マウントによって掲載社を出し分けない（companySlugs は全マウント共通）。
+ * 収録対象は makers と同じ基準（kind: "kaitori" かつ target にカメラ本体
+ * またはレンズの買取記載がある社）。platform は含めない。
  */
 export const mounts: Category[] = [
   {
@@ -229,7 +235,7 @@ export const mounts: Category[] = [
     name: "M42マウントのレンズ買取",
     short: "M42マウント",
     lead: "ねじ込み式のスクリューマウント。バヨネットとの見分け方、絞りピンの確認、アダプター事情と、売るときに伝えておく項目を整理しました。",
-    companySlugs: ["uriel", "camera-kaitoriyasan", "arrows"],
+    companySlugs: ["uriel", "camera-kaitoriyasan", "arrows", "kitamura", "fujiya", "naniwa", "daikokuya", "janpara", "rakuuru", "camera-takakuureru"],
   },
   {
     slug: "leica-m",
@@ -237,7 +243,7 @@ export const mounts: Category[] = [
     name: "ライカMマウントのレンズ買取",
     short: "ライカMマウント",
     lead: "距離計連動のバヨネット規格。Lマウント（スクリュー）との関係、連動カムの確認、付属品の探し方をまとめました。",
-    companySlugs: ["uriel", "camera-kaitoriyasan", "arrows"],
+    companySlugs: ["uriel", "camera-kaitoriyasan", "arrows", "kitamura", "fujiya", "naniwa", "daikokuya", "janpara", "rakuuru", "camera-takakuureru"],
   },
   {
     slug: "micro-four-thirds",
@@ -245,7 +251,7 @@ export const mounts: Category[] = [
     name: "マイクロフォーサーズのレンズ買取",
     short: "マイクロフォーサーズ",
     lead: "複数社が共有するミラーレス用の規格。フォーサーズとの違い、電子接点まわりの確認、アダプター母艦としての性格を整理しました。",
-    companySlugs: ["uriel", "camera-kaitoriyasan", "arrows"],
+    companySlugs: ["uriel", "camera-kaitoriyasan", "arrows", "kitamura", "fujiya", "naniwa", "daikokuya", "janpara", "rakuuru", "camera-takakuureru"],
   },
   {
     slug: "f-mount",
@@ -253,7 +259,7 @@ export const mounts: Category[] = [
     name: "ニコンFマウントのレンズ買取",
     short: "ニコンFマウント",
     lead: "長期間使われた一眼レフ用バヨネット。連動方式が機械式から電子式へ変わった規格そのものの特徴と、伝えるべき項目をまとめました。",
-    companySlugs: ["uriel", "camera-kaitoriyasan", "arrows"],
+    companySlugs: ["uriel", "camera-kaitoriyasan", "arrows", "kitamura", "fujiya", "naniwa", "daikokuya", "janpara", "rakuuru", "camera-takakuureru"],
   },
 ];
 
@@ -261,4 +267,20 @@ export function getMount(slug: string): Category {
   const m = mounts.find((x) => x.slug === slug);
   if (!m) throw new Error(`mount not found: ${slug}`);
   return m;
+}
+
+/** "2026-09-05" -> "2026年9月5日" */
+export function formatChecked(iso: string): string {
+  const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso);
+  if (!m) return iso;
+  return `${Number(m[1])}年${Number(m[2])}月${Number(m[3])}日`;
+}
+
+/**
+ * 掲載社の confirmed_date は社ごとに異なるため、集約ページでは
+ * 実在する確認日をすべて列挙する（単一日付を掲げると不正確になるため）。
+ */
+export function checkedLabelAll(): string {
+  const dates = [...new Set(companies.map((c) => c.confirmed_date))].sort();
+  return dates.map(formatChecked).join("および");
 }

@@ -11,7 +11,7 @@ import {
   getCompany,
   serviceTypeOf,
 } from "@/lib/companies";
-import { CHECKED_LABEL } from "@/lib/site";
+import { formatChecked } from "@/lib/companies";
 
 export function generateStaticParams() {
   return companies.map((c) => ({ slug: c.slug }));
@@ -30,8 +30,8 @@ export async function generateMetadata({
       ? `${c.name}の仕組みまとめ｜利用料・流れ・運営会社【2026年9月公式確認】`
       : `${c.name}のカメラ買取まとめ｜査定料・出張料・送料・入金・ジャンク対応【2026年9月公式確認】`,
     description: isPlatform
-      ? `${c.name}（運営: ${c.operator.name}）の仕組み・対象・利用料・流れを公式サイトで一次確認（${CHECKED_LABEL}）。確認できなかった項目は「公式では確認できず」と正直に記載しています。`
-      : `${c.name}（運営: ${c.operator.name}）の買取方法・対応エリア・査定料・出張料・送料・返送料・入金タイミング・キャンセル規定・故障品やジャンクの受付・遺品や大量への対応を公式サイトで一次確認（${CHECKED_LABEL}）。確認できなかった項目は「公式では確認できず」と正直に記載しています。`,
+      ? `${c.name}（運営: ${c.operator.name}）の仕組み・対象・利用料・流れを公式サイトで一次確認（${formatChecked(c.confirmed_date)}）。確認できなかった項目は「公式では確認できず」と正直に記載しています。`
+      : `${c.name}（運営: ${c.operator.name}）の買取方法・対応エリア・査定料・出張料・送料・返送料・入金タイミング・キャンセル規定・故障品やジャンクの受付・遺品や大量への対応を公式サイトで一次確認（${formatChecked(c.confirmed_date)}）。確認できなかった項目は「公式では確認できず」と正直に記載しています。`,
     alternates: { canonical: `/kaitori/${c.slug}/` },
   };
 }
@@ -112,7 +112,7 @@ export default async function KaitoriPage({
           {h1}
         </h1>
         <p className="mt-5 max-w-3xl text-sm leading-loose text-steel-600">
-          {c.name}のサービス条件を、公式サイトの記載に基づいて一次確認しました（確認日: {CHECKED_LABEL}）。
+          {c.name}のサービス条件を、公式サイトの記載に基づいて一次確認しました（確認日: {formatChecked(c.confirmed_date)}）。
           サービス形態: {serviceTypeOf(c)}。対象: {fmt(c.target)}。買取価格は状態と時期で変動するため当ページには掲載せず、条件のみを整理しています。
         </p>
 
@@ -158,7 +158,7 @@ export default async function KaitoriPage({
             ))}
           </ul>
           <p className="mt-3 text-xs text-steel-500">
-            ※ いずれも{c.name}公式サイトの記載に基づきます（{CHECKED_LABEL}確認）。当サイト独自の評価ではありません。
+            ※ いずれも{c.name}公式サイトの記載に基づきます（{formatChecked(c.confirmed_date)}確認）。当サイト独自の評価ではありません。
           </p>
         </section>
 
@@ -229,7 +229,7 @@ export default async function KaitoriPage({
         <section className="mt-14 border border-steel-200 bg-chalk-warm p-6">
           <h2 className="font-display text-lg text-steel-900">この情報の検証について</h2>
           <ul className="mt-4 space-y-2 text-[13px] leading-loose text-steel-700">
-            <li>・本ページの条件は、{c.name}公式サイト（{c.official_url}）および運営会社ページを{CHECKED_LABEL}に確認して作成しています。</li>
+            <li>・本ページの条件は、{c.name}公式サイト（{c.official_url}）および運営会社ページを{formatChecked(c.confirmed_date)}に確認して作成しています。</li>
             <li>・公式サイトで確認できなかった項目は「公式では確認できず」と表示し、推測で補完していません。</li>
             <li>・口コミ・体験談の創作、架空の買取金額・実績の掲載は行いません。買取価格は変動するため当サイトでは掲載していません。</li>
             <li>・条件は変更される場合があります。申込前に必ず公式サイト・利用規約で最新の内容をご確認ください。</li>

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Breadcrumbs from "@/components/Breadcrumbs";
-import { CHECKED_LABEL, SITE_NAME } from "@/lib/site";
+import { SITE_NAME } from "@/lib/site";
+import { checkedLabelAll } from "@/lib/companies";
 
 export const metadata: Metadata = {
   title: "コンテンツ制作ポリシー",
@@ -19,7 +20,7 @@ const sections: { t: string; body: string[] }[] = [
   {
     t: "2. 確認日の運用",
     body: [
-      `各業者ページ・比較表には確認日を明記します（現行の確認日: ${CHECKED_LABEL}）。条件は変更される場合があるため、再確認を行った際は確認日を更新します。確認日から時間が経過している情報は、その日付時点の情報としてお読みください。`,
+      `各業者ページ・比較表には確認日を明記します（現行の確認日: ${checkedLabelAll()}）。条件は変更される場合があるため、再確認を行った際は確認日を更新します。確認日から時間が経過している情報は、その日付時点の情報としてお読みください。`,
     ],
   },
   {

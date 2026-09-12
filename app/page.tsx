@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { categories, companies, kaitoriCompanies, makers, mounts, platformCompanies } from "@/lib/companies";
-import { CHECKED_LABEL, SITE_NAME, SITE_TAGLINE } from "@/lib/site";
+import { categories, companies, kaitoriCompanies, makers, mounts, platformCompanies, checkedLabelAll} from "@/lib/companies";
+import { SITE_NAME, SITE_TAGLINE } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: `${SITE_NAME}｜${SITE_TAGLINE}`,
@@ -66,7 +66,7 @@ export default function HomePage() {
             <span className="text-vermilion">中立</span>のカメラ買取ナビ。
           </h1>
           <p className="mt-8 max-w-xl text-sm leading-loose text-steel-200 md:text-base">
-            古いフィルムカメラ、カビのあるレンズ、実家から出てきた機材。「これは売れるのか」を判断する材料と、掲載サービスの査定料・出張料・送料・返送料・入金の条件を、すべて各社公式サイトで一次確認し、確認日（{CHECKED_LABEL}）を明記。確認できなかった項目は「公式では確認できず」と正直に書きます。
+            古いフィルムカメラ、カビのあるレンズ、実家から出てきた機材。「これは売れるのか」を判断する材料と、掲載サービスの査定料・出張料・送料・返送料・入金の条件を、すべて各社公式サイトで一次確認し、確認日（{checkedLabelAll()}）を明記。確認できなかった項目は「公式では確認できず」と正直に書きます。
           </p>
           <div className="mt-10 flex flex-col gap-3 sm:flex-row">
             <Link href="/guide/kachi-mikata/" className="btn-primary">
@@ -231,7 +231,7 @@ export default function HomePage() {
                 掲載サービスを、同じ物差しで並べる
               </h2>
               <p className="mt-4 max-w-2xl text-sm leading-loose text-steel-200">
-                買取サービス{kaitoriCompanies.length}社と一括査定・価格比較型{platformCompanies.length}サービス。買取方法・対応エリア・査定料・出張料・送料・返送料・入金・キャンセル規定・故障品の受付・遺品や大量への対応・運営会社と古物商許可番号を統一フォーマットで比較しています（{CHECKED_LABEL}公式確認）。
+                買取サービス{kaitoriCompanies.length}社と一括査定・価格比較型{platformCompanies.length}サービス。買取方法・対応エリア・査定料・出張料・送料・返送料・入金・キャンセル規定・故障品の受付・遺品や大量への対応・運営会社と古物商許可番号を統一フォーマットで比較しています（{checkedLabelAll()}公式確認）。
               </p>
             </div>
             <Link href="/compare/" className="btn-primary mt-8 shrink-0 md:mt-0">
@@ -261,7 +261,7 @@ export default function HomePage() {
           {[
             {
               t: "公式サイトの一次確認",
-              d: `掲載する条件はすべて各社公式サイトで確認し、確認日を明記します。今回の確認日は${CHECKED_LABEL}です。`,
+              d: `掲載する条件はすべて各社公式サイトで確認し、確認日を明記します。今回の確認日は${checkedLabelAll()}です。`,
             },
             {
               t: "確認できないことは書かない",
