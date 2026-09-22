@@ -403,6 +403,18 @@ export default function BoushitsukoSeiriPage() {
           <h2 className="section-title mb-6">関連ページ</h2>
           <ul className="grid gap-3 text-sm md:grid-cols-2">
             <li>
+              <Link href="/situation/ihin-kachi/" className="block border border-chalk-line bg-chalk-card px-4 py-4 hover:border-vermilion">
+                <span className="font-display text-steel-900">故人のカメラの価値がわからないときの調べ方</span>
+                <span className="mt-1 block text-xs text-steel-500">型番・状態・付属品を家族で確かめる手順</span>
+              </Link>
+            </li>
+            <li>
+              <Link href="/situation/ihin-shucchou/" className="block border border-chalk-line bg-chalk-card px-4 py-4 hover:border-vermilion">
+                <span className="font-display text-steel-900">遺品のカメラを出張買取で見てもらうには</span>
+                <span className="mt-1 block text-xs text-steel-500">予約前に決めること・当日の流れ</span>
+              </Link>
+            </li>
+            <li>
               <Link href="/situation/tairyou/" className="block border border-chalk-line bg-chalk-card px-4 py-4 hover:border-vermilion">
                 <span className="font-display text-steel-900">カメラ・レンズを大量に売るには</span>
                 <span className="mt-1 block text-xs text-steel-500">一括か小分けか・リスト化・出張と宅配の使い分け</span>
