@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import Link from "next/link";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import CompanyCard from "@/components/CompanyCard";
@@ -8,6 +9,7 @@ import {
   getCompany,
   platformCompanies,
   checkedLabelAll,
+  formatChecked,
 } from "@/lib/companies";
 
 
@@ -28,6 +30,10 @@ export interface HubProps {
   faqs: { q: string; a: string }[];
   /** 関連ガイドへの導線 */
   guides?: { href: string; label: string; desc: string }[];
+  /** 表示上の更新日（ISO）。指定したページだけ h1 下に表示 */
+  updated?: string;
+  /** intro の直後に差し込む個別コンテンツ（指定したページのみ） */
+  children?: ReactNode;
 }
 
 export default function CategoryHub({
@@ -39,6 +45,8 @@ export default function CategoryHub({
   cautions,
   faqs,
   guides = [],
+  updated,
+  children,
 }: HubProps) {
   const hubCompanies = cat.companySlugs.map((s) => getCompany(s));
   const otherCats = categories.filter((c) => c.slug !== cat.slug);
@@ -57,7 +65,13 @@ export default function CategoryHub({
         <h1 className="max-w-4xl font-display text-2xl leading-relaxed text-steel-900 md:text-4xl md:leading-relaxed">
           {h1}
         </h1>
+        {updated && (
+          <p className="mt-3 text-xs text-steel-500">
+            更新日: <time dateTime={updated}>{formatChecked(updated)}</time>
+          </p>
+        )}
         <p className="mt-5 max-w-3xl text-sm leading-loose text-steel-600">{intro}</p>
+        {children}
 
         {/* 判断ポイント（一般知識） */}
         <section className="mt-12">

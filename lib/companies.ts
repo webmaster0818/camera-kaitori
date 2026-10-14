@@ -39,6 +39,19 @@ export interface Company {
   features: string[];
   confirmed_date: string;
   note?: string | null;
+  /** 以下は業者ページ（/kaitori/<slug>/）の個別上書き。未指定の社は共通テンプレートのまま */
+  page_title?: string | null;
+  page_h1?: string | null;
+  page_description?: string | null;
+  /** ページの表示上の更新日（ISO）。指定時のみ h1 下に表示 */
+  page_updated?: string | null;
+  /** h1 直下に置く検索語への直接の答え（段落の配列） */
+  lead_answer?: string[] | null;
+  /** カメラ・レンズを出すときの使い方（見出し＋本文） */
+  camera_points_title?: string | null;
+  camera_points?: { t: string; d: string }[] | null;
+  /** 共通FAQの前に足す個別FAQ */
+  extra_faqs?: { q: string; a: string }[] | null;
 }
 
 export const companies = raw as unknown as Company[];

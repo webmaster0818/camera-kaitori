@@ -1,21 +1,99 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import CategoryHub from "@/components/CategoryHub";
-import { getCategory } from "@/lib/companies";
+import JsonLd from "@/components/JsonLd";
+import { fmt, formatChecked, getCategory, getCompany } from "@/lib/companies";
+import { SITE_NAME, SITE_URL, OPERATOR } from "@/lib/site";
+
+const TITLE = "デジカメ買取｜売る前のチェック10項目・相場の調べ方・宅配買取の条件比較【2026年10月更新】";
+const DESC =
+  "デジカメ（デジタル一眼・ミラーレス・コンデジ）を買取に出す前のチェック10項目、相場の調べ方（型番と買取実績の読み方）、メーカー別・状態別の案内、宅配買取各社の査定料・送料・返送料・入金を公式サイトで確認して整理（2026年10月14日更新）。";
+const PATH = "/digital/";
+const PAGE_UPDATED = "2026-10-14";
 
 export const metadata: Metadata = {
-  title: "デジタル一眼・ミラーレスの買取｜売る前の準備と宅配買取サービスの条件比較",
-  description:
-    "デジタル一眼レフ・ミラーレスを売る前の判断ポイント（型番と付属品・メモリーカードとデータ削除・シャッター回数・センサーの状態）と、宅配買取サービスの査定料・送料・返送料・入金・キャンセル規定を公式サイトで一次確認して比較。確認日2026年9月5日を明記しています。",
-  alternates: { canonical: "/digital/" },
+  title: TITLE,
+  description: DESC,
+  alternates: { canonical: PATH },
 };
+
+const articleLd = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: TITLE,
+  description: DESC,
+  dateModified: PAGE_UPDATED,
+  mainEntityOfPage: `${SITE_URL}${PATH}`,
+  author: { "@type": "Organization", name: OPERATOR.name },
+  publisher: { "@type": "Organization", name: SITE_NAME },
+};
+
+/** 売る前のチェック（一般知識。金額は扱わない） */
+const CHECKLIST = [
+  "型番を本体底面などの表示で控えた（「Mark II」「II」などの世代表記まで）",
+  "バッテリー・充電器・ストラップ・キャップ・元箱・説明書の有無を確認した",
+  "すべてのカードスロットからメモリーカードを抜いた",
+  "スマホアプリの登録・Bluetoothのペアリング・クラウド連携を解除した",
+  "本体を初期化した（著作権情報・所有者名の設定も削除）",
+  "電源が入るか、シャッターが切れるか、液晶が映るかを確認できる範囲で試した",
+  "シャッター回数が分かれば数値と確認方法を控えた（分からなければ「不明」と申告）",
+  "センサーのゴミ、レンズのカビ・くもりを光で確認し、気になる点を写真に撮った",
+  "外観の傷・スレ・ゴムの剥がれを写真に残した",
+  "申込先の査定料・送料・キャンセル時の返送料・入金のタイミングを確認した",
+];
+
+/** 機種・メーカー・状態別の導線（サイト内の既存ページのみ） */
+const ROUTES: { h: string; links: { href: string; label: string }[] }[] = [
+  {
+    h: "カメラの種類で選ぶ",
+    links: [
+      { href: "/digital/compact/", label: "コンパクトデジカメ（コンデジ）" },
+      { href: "/film/", label: "フィルムカメラ" },
+      { href: "/old-lens/", label: "オールドレンズ・交換レンズ" },
+    ],
+  },
+  {
+    h: "メーカーで選ぶ",
+    links: [
+      { href: "/maker/canon/", label: "キヤノン（EF・RF）" },
+      { href: "/maker/nikon/", label: "ニコン（F・Z）" },
+      { href: "/maker/sony/", label: "ソニー（E・A）" },
+      { href: "/maker/fujifilm/", label: "富士フイルム（X・GFX）" },
+      { href: "/mount/micro-four-thirds/", label: "マイクロフォーサーズ（OM・パナソニック等）" },
+    ],
+  },
+  {
+    h: "状態で選ぶ",
+    links: [
+      { href: "/broken/dengen-hairanai/", label: "電源が入らないデジカメ" },
+      { href: "/broken/lens-kabi/", label: "カビ・くもりのあるレンズ" },
+      { href: "/broken/", label: "壊れた・ジャンク品" },
+    ],
+  },
+  {
+    h: "状況・売り先で選ぶ",
+    links: [
+      { href: "/situation/tairyou/", label: "機材一式・大量に売る" },
+      { href: "/situation/ihin/", label: "遺品・実家のカメラ" },
+      { href: "/compare/", label: "買取サービスの統一比較表" },
+      { href: "/kaitori/oikura/", label: "おいくら（一括査定）の手数料と使い方" },
+      { href: "/kaitori/minna-no-kaitori/", label: "みんなの買取（一括査定）の仕組み" },
+    ],
+  },
+];
 
 export default function DigitalPage() {
   const cat = getCategory("digital");
+  const oikura = getCompany("oikura");
+  const rows = cat.companySlugs.map((slug) => getCompany(slug));
   return (
+    <>
+    <JsonLd data={articleLd} />
     <CategoryHub
       cat={cat}
       kicker="DIGITAL CAMERA"
-      h1="デジタル一眼・ミラーレスの買取｜売る前の準備と条件比較"
+      h1="デジカメ買取の前に｜売る前のチェック・相場の調べ方・業者の条件比較"
+      updated={PAGE_UPDATED}
       intro="デジタル一眼レフ・ミラーレスは、新機種の登場で相場が動きやすいカテゴリです。売ると決めたら、付属品を揃え、メモリーカードを抜いてデータを消去し、状態を正確に申告したうえで、送料・返送料・入金の条件を比べるのが基本の流れになります。このページでは、デジタルカメラを売る前に押さえておきたい一般的な判断ポイントと、掲載サービスの公式確認済み条件をまとめます。買取価格は日々変動するため、当サイトでは金額を掲載しません。"
       points={[
         {
@@ -102,15 +180,115 @@ export default function DigitalPage() {
       guides={[
         { href: "/guide/uru-mae/", label: "売る前の準備", desc: "付属品・メモリーカード・データ削除・申告のコツ" },
         { href: "/guide/erabikata/", label: "専門店・総合・出張の使い分け", desc: "売り方の仕組みから整理" },
-        { href: "/situation/tairyou/", label: "機材一式・大量を売る", desc: "リスト化と査定内訳の見方" },
         { href: "/guide/trouble/", label: "買取トラブル対処", desc: "減額・返送トラブルの相談先" },
-        { href: "/digital/compact/", label: "コンパクトデジカメを売る", desc: "レンズ一体型デジカメの確認ポイント" },
-        { href: "/maker/canon/", label: "キヤノンのカメラ買取", desc: "EF・RFマウントの見分け方と売る前の準備" },
-        { href: "/maker/nikon/", label: "ニコンのカメラ買取", desc: "FマウントとZマウント、レンズ表記の読み方" },
-        { href: "/maker/sony/", label: "ソニーのカメラ買取", desc: "EマウントとAマウントの違いと確認項目" },
-        { href: "/maker/fujifilm/", label: "富士フイルムのカメラ買取", desc: "Xマウント・GFX・レンズ一体型機の扱い" },
-        { href: "/broken/dengen-hairanai/", label: "電源が入らないカメラを売る", desc: "動作未確認と故障の切り分けと申告" },
+        { href: "/guide/kachi-mikata/", label: "フィルム機・オールドレンズの価値の見分け方", desc: "古い機材を売る前に確認する7つのポイント" },
       ]}
-    />
+    >
+      <div className="mt-6 max-w-3xl border-l-4 border-vermilion bg-chalk-card px-5 py-4">
+        <p className="kicker mb-2">先に結論</p>
+        <p className="text-sm leading-loose text-steel-800">
+          デジカメ（デジタル一眼レフ・ミラーレス・コンパクトデジカメ）は、型落ちや古い機種でも買取の対象になる場合があります。買取額は型番・状態・付属品・売る時期で決まるため、当サイトでは金額を載せず、相場の調べ方と業者ごとの条件を整理しています。
+        </p>
+        <p className="mt-2 text-sm leading-loose text-steel-800">
+          売る前に「型番と付属品（特にバッテリー・充電器）をそろえる」「メモリーカードを抜いて本体を初期化する」「傷・カビ・動作を把握して申告する」の3つを済ませ、査定料・送料・キャンセル時の返送料・入金のタイミングを2〜3社で比べるのが基本です。
+        </p>
+      </div>
+
+      <section className="mt-12">
+        <h2 className="section-title mb-5">デジカメを売る前のチェック10項目</h2>
+        <ol className="grid gap-2 md:grid-cols-2">
+          {CHECKLIST.map((item, i) => (
+            <li key={item} className="flex gap-3 border border-chalk-line bg-chalk-card px-4 py-3 text-[13px] leading-relaxed text-steel-800">
+              <span aria-hidden="true" className="font-display text-sm text-vermilion">
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ol>
+        <p className="mt-3 text-xs text-steel-500">
+          各項目の理由と具体的な手順は、下の「売る前に押さえる判断ポイント」と<Link href="/guide/uru-mae/" className="text-vermilion underline underline-offset-4">売る前の準備ガイド</Link>で説明しています。
+        </p>
+      </section>
+
+      <section className="mt-12">
+        <h2 className="section-title mb-5">デジカメの買取相場の調べ方</h2>
+        <div className="space-y-4 text-[13px] leading-loose text-steel-700">
+          <p>
+            <strong className="text-steel-900">1. 型番を正確にそろえる。</strong>
+            同じシリーズでも「II」「Mark II」などの世代や、ボディ単体かレンズキットかで別の商品として扱われます。本体の表示で型番を確認してから調べます。
+          </p>
+          <p>
+            <strong className="text-steel-900">2. 買取実績・買取価格表を「状態」と「日付」付きで読む。</strong>
+            買取業者や一括査定サービスの中には、過去の買取実績を公開しているところがあります。たとえば一括査定のおいくらは、加盟店の買取実績を「カメラ・光学機器」カテゴリで公開しており、{formatChecked(PAGE_UPDATED)}時点で8,920件が掲載されていました（同ページは「おいくらを通じて買い取りが成立した商品でないものも含まれます」と注記）。実績の金額は、その個体の状態ランクと買取日の時点のものなので、自分の機材と状態・付属品・時期が近い例を探して目安にします。
+          </p>
+          <p>
+            <strong className="text-steel-900">3. 「上限」「最大」表記は条件付きで受け取る。</strong>
+            買取価格表の上限額は、状態が良く付属品がそろった個体を前提にしていることが一般的です。中古販売価格は整備や保証の費用を含むため、買取額とは一致しません。
+          </p>
+          <p>
+            <strong className="text-steel-900">4. 最後は同じ情報で2〜3社に見積もりを取る。</strong>
+            型番・状態・付属品・写真を同じ内容でそろえて依頼すると、見積もりの差が比べやすくなります。一括査定を使う場合の手数料や仕組みは、
+            <Link href="/kaitori/oikura/" className="text-vermilion underline underline-offset-4">おいくら</Link>・
+            <Link href="/kaitori/minna-no-kaitori/" className="text-vermilion underline underline-offset-4">みんなの買取</Link>
+            の各ページで公式記載を確認しています。なお、おいくらの公式Q&Aは「古すぎたり、故障している電化製品など、再販ができないと買取業者が判断した商品は見積りがでないこともあります」としています（{formatChecked(oikura.page_updated ?? PAGE_UPDATED)}確認）。
+          </p>
+        </div>
+      </section>
+
+      <section className="mt-12">
+        <h2 className="section-title mb-2">キャンセル時の返送料と入金タイミング（公式確認）</h2>
+        <p className="mb-5 text-sm leading-loose text-steel-600">
+          宅配買取で査定額に納得できなかったとき、送り返してもらう費用を誰が負担するかは業者で分かれます。下表は各社公式サイトの記載をそのまま要約したものです（確認日は各社の欄に記載）。
+        </p>
+        <div className="overflow-x-auto border border-chalk-line">
+          <table className="spec-table">
+            <thead>
+              <tr>
+                <th className="w-32 md:w-40">業者</th>
+                <th>キャンセル時の返送料</th>
+                <th>入金</th>
+              </tr>
+            </thead>
+            <tbody>
+              {rows.map((c) => (
+                <tr key={c.slug}>
+                  <th>
+                    <Link href={`/kaitori/${c.slug}/`} className="underline underline-offset-4 hover:text-vermilion">
+                      {c.name}
+                    </Link>
+                    <span className="mt-1 block text-[11px] font-normal text-steel-500">{formatChecked(c.confirmed_date)}確認</span>
+                  </th>
+                  <td className="text-[13px]">{fmt(c.hiyou.hensou)}</td>
+                  <td className="text-[13px]">{fmt(c.nyukin)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-2 text-xs text-steel-500">※ 横にスクロールできます。条件は変更される場合があるため、申込前に各社公式サイトで最新の内容を確認してください。</p>
+      </section>
+
+      <section className="mt-12">
+        <h2 className="section-title mb-5">機種・メーカー・状態別に探す</h2>
+        <div className="grid gap-5 md:grid-cols-2">
+          {ROUTES.map((g) => (
+            <div key={g.h} className="border border-chalk-line bg-chalk-card p-5">
+              <h3 className="font-display text-base text-steel-900">{g.h}</h3>
+              <ul className="mt-3 space-y-2 text-[13px]">
+                {g.links.map((l) => (
+                  <li key={l.href}>
+                    <Link href={l.href} className="text-vermilion underline underline-offset-4 hover:text-vermilion-deep">
+                      {l.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </section>
+    </CategoryHub>
+    </>
   );
 }

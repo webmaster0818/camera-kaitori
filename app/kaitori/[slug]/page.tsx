@@ -35,10 +35,10 @@ export async function generateMetadata({
   const c = getCompany(slug);
   const isPlatform = c.kind === "platform";
   return {
-    title: isPlatform
+    title: c.page_title ? c.page_title : isPlatform
       ? `${c.name}の仕組みまとめ｜利用料・流れ・運営会社【2026年9月公式確認】`
       : `${c.name}のカメラ買取まとめ｜査定料・出張料・送料・入金・ジャンク対応【2026年9月公式確認】`,
-    description: fitDesc(
+    description: c.page_description ? c.page_description : fitDesc(
       isPlatform
         ? `${c.name}（運営: ${c.operator.name}）の仕組み・対象・利用料・流れを公式サイトで一次確認（${formatChecked(c.confirmed_date)}）。`
         : `${c.name}（運営: ${c.operator.name}）の買取方法・対応エリア・査定料・出張料・送料・返送料・入金タイミング・キャンセル規定・故障品やジャンクの受付・遺品や大量への対応を公式サイトで一次確認（${formatChecked(c.confirmed_date)}）。`,
@@ -60,7 +60,7 @@ export default async function KaitoriPage({
   const cta = ctaFor(c);
   const cats = categoriesOf(c);
   const isPlatform = c.kind === "platform";
-  const faqs = isPlatform
+  const baseFaqs = isPlatform
     ? [
         {
           q: `${c.name}の利用に費用はかかりますか？`,
@@ -78,6 +78,7 @@ export default async function KaitoriPage({
         },
       ]
     : companyFaq(c);
+  const faqs = [...(c.extra_faqs ?? []), ...baseFaqs];
 
   const quickRows: { label: string; value: string }[] = isPlatform
     ? [
@@ -106,7 +107,7 @@ export default async function KaitoriPage({
         { label: "クーリングオフの記載", value: fmt(c.cooling_off) },
       ];
 
-  const h1 = isPlatform
+  const h1 = c.page_h1 ? c.page_h1 : isPlatform
     ? `${c.name}の仕組みまとめ｜利用料・流れ・運営会社【2026年9月公式確認】`
     : `${c.name}のカメラ買取まとめ｜査定料・出張料・送料・入金・ジャンク対応【2026年9月公式確認】`;
 
@@ -125,6 +126,21 @@ export default async function KaitoriPage({
         <h1 className="max-w-4xl font-display text-2xl leading-relaxed text-steel-900 md:text-3xl md:leading-relaxed">
           {h1}
         </h1>
+        {c.page_updated && (
+          <p className="mt-3 text-xs text-steel-500">
+            更新日: <time dateTime={c.page_updated}>{formatChecked(c.page_updated)}</time>
+          </p>
+        )}
+        {c.lead_answer && c.lead_answer.length > 0 && (
+          <div className="mt-5 max-w-3xl border-l-4 border-vermilion bg-chalk-card px-5 py-4">
+            <p className="kicker mb-2">先に結論</p>
+            {c.lead_answer.map((para) => (
+              <p key={para} className="mt-2 text-sm leading-loose text-steel-800 first:mt-0">
+                {para}
+              </p>
+            ))}
+          </div>
+        )}
         <p className="mt-5 max-w-3xl text-sm leading-loose text-steel-600">
           {c.name}のサービス条件を、公式サイトの記載に基づいて一次確認しました（確認日: {formatChecked(c.confirmed_date)}）。
           サービス形態: {serviceTypeOf(c)}。対象: {fmt(c.target)}。買取価格は状態と時期で変動するため当ページには掲載せず、条件のみを整理しています。
@@ -158,6 +174,32 @@ export default async function KaitoriPage({
             </Link>
           </div>
         </section>
+
+        {c.camera_points && c.camera_points.length > 0 && (
+          <section className="mt-14">
+            <h2 className="section-title mb-5">
+              {c.camera_points_title ?? `${c.name}でカメラ・レンズを出すときの使い方`}
+            </h2>
+            <div className="grid gap-5 md:grid-cols-2">
+              {c.camera_points.map((p, i) => (
+                <div key={p.t} className="border border-chalk-line bg-chalk-card p-5">
+                  <h3 className="flex items-baseline gap-3 font-display text-base text-steel-900">
+                    <span className="font-display text-sm tracking-widest2 text-vermilion">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    {p.t}
+                  </h3>
+                  <p className="mt-3 text-[13px] leading-loose text-steel-700">{p.d}</p>
+                </div>
+              ))}
+            </div>
+            <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+              <Link href="/digital/" className="btn-ghost text-sm">デジカメを売る前のチェック</Link>
+              <Link href="/broken/lens-kabi/" className="btn-ghost text-sm">カビ・くもりのあるレンズ</Link>
+              <Link href="/guide/uru-mae/" className="btn-ghost text-sm">売る前の準備</Link>
+            </div>
+          </section>
+        )}
 
         <section className="mt-14">
           <h2 className="section-title mb-5">公式サイトが掲げる特徴</h2>
