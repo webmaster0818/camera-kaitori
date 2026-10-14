@@ -7,7 +7,7 @@ import { getCompany, formatChecked } from "@/lib/companies";
 
 const TITLE = "電源が入らない・エラーが出るカメラを売る｜故障と決めつける前の確認と申告のしかた";
 const DESC =
-  "電源が入らない、エラー表示が消えない、液晶が映らない。デジタルカメラや電池を使うフィルムカメラを売る前に、故障と決めつける前に確認できること（電池・電池の種類・接点・液漏れ跡の目視）、「動作未確認」と「故障」の書き分け、メモリーカードの扱い、宅配で送る前に確かめたい故障品の受付・返送料・バッテリー欠品の条件を、掲載社の公式記載にもとづいて整理しました。";
+  "電源が入らない・エラー表示が消えない・液晶が映らないカメラを売る前に、故障と決めつける前に確認できること（電池の種類・接点・液漏れ跡）、「動作未確認」と「故障」の書き分け、メモリーカードの扱い、故障品の受付・返送料・バッテリー欠品の条件を公式記載にもとづいて整理。";
 const PATH = "/broken/dengen-hairanai/";
 const PAGE_DATE = "2026-09-23";
 const PAGE_DATE_LABEL = "2026年9月23日";
@@ -612,6 +612,18 @@ export default function DengenHairanaiPage() {
               <Link href="/compare/" className="block border border-chalk-line bg-chalk-card px-4 py-4 hover:border-vermilion">
                 <span className="font-display text-steel-900">買取業者の統一比較表</span>
                 <span className="mt-1 block text-xs text-steel-500">故障品対応・返送料を同じ物差しで</span>
+              </Link>
+            </li>
+            <li>
+              <Link href="/broken/lens-kabi/" className="block border border-chalk-line bg-chalk-card px-4 py-4 hover:border-vermilion">
+                <span className="font-display text-steel-900">カビ・くもりのあるレンズを売る</span>
+                <span className="mt-1 block text-xs text-steel-500">カビの確認方法と申告・梱包の注意</span>
+              </Link>
+            </li>
+            <li>
+              <Link href="/digital/compact/" className="block border border-chalk-line bg-chalk-card px-4 py-4 hover:border-vermilion">
+                <span className="font-display text-steel-900">コンパクトデジカメを売る</span>
+                <span className="mt-1 block text-xs text-steel-500">レンズ一体型デジカメの確認ポイント</span>
               </Link>
             </li>
           </ul>

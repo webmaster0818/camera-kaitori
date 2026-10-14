@@ -17,6 +17,15 @@ export function generateStaticParams() {
   return companies.map((c) => ({ slug: c.slug }));
 }
 
+/** description を160字以内に収める（長い場合は補足文→運営会社名の順で省く） */
+function fitDesc(base: string, short: string): string {
+  const note = "確認できなかった項目は「公式では確認できず」と正直に記載しています。";
+  for (const s of [base + note, base + "未確認の項目は「公式では確認できず」と記載。", base, short]) {
+    if (s.length <= 160) return s;
+  }
+  return short;
+}
+
 export async function generateMetadata({
   params,
 }: {
@@ -29,9 +38,14 @@ export async function generateMetadata({
     title: isPlatform
       ? `${c.name}の仕組みまとめ｜利用料・流れ・運営会社【2026年9月公式確認】`
       : `${c.name}のカメラ買取まとめ｜査定料・出張料・送料・入金・ジャンク対応【2026年9月公式確認】`,
-    description: isPlatform
-      ? `${c.name}（運営: ${c.operator.name}）の仕組み・対象・利用料・流れを公式サイトで一次確認（${formatChecked(c.confirmed_date)}）。確認できなかった項目は「公式では確認できず」と正直に記載しています。`
-      : `${c.name}（運営: ${c.operator.name}）の買取方法・対応エリア・査定料・出張料・送料・返送料・入金タイミング・キャンセル規定・故障品やジャンクの受付・遺品や大量への対応を公式サイトで一次確認（${formatChecked(c.confirmed_date)}）。確認できなかった項目は「公式では確認できず」と正直に記載しています。`,
+    description: fitDesc(
+      isPlatform
+        ? `${c.name}（運営: ${c.operator.name}）の仕組み・対象・利用料・流れを公式サイトで一次確認（${formatChecked(c.confirmed_date)}）。`
+        : `${c.name}（運営: ${c.operator.name}）の買取方法・対応エリア・査定料・出張料・送料・返送料・入金タイミング・キャンセル規定・故障品やジャンクの受付・遺品や大量への対応を公式サイトで一次確認（${formatChecked(c.confirmed_date)}）。`,
+      isPlatform
+        ? `${c.name}の仕組み・対象・利用料・流れを公式サイトで一次確認（${formatChecked(c.confirmed_date)}）。運営は${c.operator.name}。`
+        : `${c.name}の買取方法・対応エリア・査定料・出張料・送料・返送料・入金タイミング・キャンセル規定・故障品やジャンクの受付・遺品や大量への対応を公式サイトで一次確認（${formatChecked(c.confirmed_date)}）。`,
+    ),
     alternates: { canonical: `/kaitori/${c.slug}/` },
   };
 }

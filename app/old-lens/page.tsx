@@ -72,6 +72,7 @@ export default function OldLensPage() {
         { href: "/mount/leica-m/", label: "ライカMマウントのレンズ買取", desc: "距離計連動バヨネットの確認項目" },
         { href: "/mount/micro-four-thirds/", label: "マイクロフォーサーズのレンズ買取", desc: "フォーサーズとの違いと電子接点" },
         { href: "/mount/f-mount/", label: "ニコンFマウントのレンズ買取", desc: "一眼レフ用バヨネットの仕様の幅" },
+        { href: "/broken/lens-kabi/", label: "カビ・くもりのあるレンズを売る", desc: "カビの確認方法と申告・梱包の注意" },
       ]}
     />
   );

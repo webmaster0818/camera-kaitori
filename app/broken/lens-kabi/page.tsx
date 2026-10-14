@@ -7,7 +7,7 @@ import { getCompany, fmt, formatChecked } from "@/lib/companies";
 
 const TITLE = "カビ・くもり・バルサム切れのあるレンズを売る｜症状の見分け方と申告・宅配前の確認";
 const DESC =
-  "レンズの中に白い筋やもやが見えるとき、それがカビか、くもりか、バルサム切れか、チリや拭き傷か。ライトで透かして見分ける一般的な方法、自分で清掃・分解しない方がよい理由、症状・位置・範囲を写真と文章で申告するしかた、宅配で送る前に確かめたい故障品受付の可否・値段が付かない場合の扱い・返送料を整理しました。掲載社の条件は公式サイトの一次確認に基づき確認日を明記しています。";
+  "レンズの白い筋やもやが、カビか、くもりか、バルサム切れか、チリや拭き傷か。ライトで透かして見分ける方法、自分で清掃・分解しない方がよい理由、症状を写真と文章で申告するしかた、故障品受付の可否・値段が付かない場合の扱い・返送料を、公式サイトの一次確認にもとづき整理しました。";
 const PATH = "/broken/lens-kabi/";
 const PAGE_DATE = "2026-09-23";
 const PAGE_DATE_LABEL = "2026年9月23日";
@@ -607,6 +607,12 @@ export default function LensKabiPage() {
               <Link href="/compare/" className="block border border-chalk-line bg-chalk-card px-4 py-4 hover:border-vermilion">
                 <span className="font-display text-steel-900">買取業者の統一比較表</span>
                 <span className="mt-1 block text-xs text-steel-500">送料・返送料・故障品対応を同じ物差しで</span>
+              </Link>
+            </li>
+            <li>
+              <Link href="/broken/dengen-hairanai/" className="block border border-chalk-line bg-chalk-card px-4 py-4 hover:border-vermilion">
+                <span className="font-display text-steel-900">電源が入らないカメラを売る</span>
+                <span className="mt-1 block text-xs text-steel-500">動作未確認と故障の切り分けと申告</span>
               </Link>
             </li>
           </ul>

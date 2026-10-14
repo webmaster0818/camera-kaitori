@@ -6,7 +6,7 @@ import { SITE_NAME, SITE_URL, OPERATOR } from "@/lib/site";
 
 const TITLE = "古いコンパクトデジカメ（コンデジ）を売る前に｜型番・付属品・データ・電池の確認手順";
 const DESC =
-  "引き出しに眠っている古いコンパクトデジタルカメラを手放す前に、自分で確認しておくことを一般知識として整理。型番の確認場所、バッテリー・充電器・ケーブル・メモリーカードなど付属品の揃え方、液晶とレンズバリアの見方、データとメモリーカードの扱い、電池の膨張や液漏れがあるときの安全側の扱い、宅配で送るときの注意、値段が付かない場合の選択肢までまとめました。";
+  "引き出しに眠っている古いコンパクトデジカメを手放す前に確認することを整理。型番の確認場所、バッテリー・充電器など付属品の揃え方、液晶とレンズバリアの見方、データとメモリーカードの扱い、電池の膨張や液漏れがあるときの扱い、宅配で送るときの注意、値段が付かない場合の選択肢まで。";
 const PATH = "/digital/compact/";
 const PAGE_DATE = "2026-09-23";
 const PAGE_DATE_LABEL = "2026年9月23日";
@@ -632,6 +632,12 @@ export default function CompactDigitalPage() {
               <Link href="/compare/" className="block border border-chalk-line bg-chalk-card px-4 py-4 hover:border-vermilion">
                 <span className="font-display text-steel-900">買取業者の統一比較表</span>
                 <span className="mt-1 block text-xs text-steel-500">出張対応・遺品対応・返送料を同じ物差しで</span>
+              </Link>
+            </li>
+            <li>
+              <Link href="/broken/dengen-hairanai/" className="block border border-chalk-line bg-chalk-card px-4 py-4 hover:border-vermilion">
+                <span className="font-display text-steel-900">電源が入らないカメラを売る</span>
+                <span className="mt-1 block text-xs text-steel-500">動作未確認と故障の切り分けと申告</span>
               </Link>
             </li>
           </ul>

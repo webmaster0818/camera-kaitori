@@ -5,7 +5,7 @@ import { getCategory } from "@/lib/companies";
 export const metadata: Metadata = {
   title: "デジタル一眼・ミラーレスの買取｜売る前の準備と宅配買取サービスの条件比較",
   description:
-    "デジタル一眼レフ・ミラーレスを売る前の判断ポイント（型番と付属品・メモリーカードとデータ削除・シャッター回数・センサーの状態）と、宅配買取サービスの査定料・送料・返送料・入金・キャンセル規定を公式サイトで一次確認して比較。確認日2026年9月5日を明記しています。シャッター回数の確認方法、センサーのゴミとカビの見分け、ボディとレンズを分けて出すかの考え方、スマホアプリ連携の解除、メモリーカードの抜き忘れ防止も解説。",
+    "デジタル一眼レフ・ミラーレスを売る前の判断ポイント（型番と付属品・メモリーカードとデータ削除・シャッター回数・センサーの状態）と、宅配買取サービスの査定料・送料・返送料・入金・キャンセル規定を公式サイトで一次確認して比較。確認日2026年9月5日を明記しています。",
   alternates: { canonical: "/digital/" },
 };
 
@@ -105,6 +105,11 @@ export default function DigitalPage() {
         { href: "/situation/tairyou/", label: "機材一式・大量を売る", desc: "リスト化と査定内訳の見方" },
         { href: "/guide/trouble/", label: "買取トラブル対処", desc: "減額・返送トラブルの相談先" },
         { href: "/digital/compact/", label: "コンパクトデジカメを売る", desc: "レンズ一体型デジカメの確認ポイント" },
+        { href: "/maker/canon/", label: "キヤノンのカメラ買取", desc: "EF・RFマウントの見分け方と売る前の準備" },
+        { href: "/maker/nikon/", label: "ニコンのカメラ買取", desc: "FマウントとZマウント、レンズ表記の読み方" },
+        { href: "/maker/sony/", label: "ソニーのカメラ買取", desc: "EマウントとAマウントの違いと確認項目" },
+        { href: "/maker/fujifilm/", label: "富士フイルムのカメラ買取", desc: "Xマウント・GFX・レンズ一体型機の扱い" },
+        { href: "/broken/dengen-hairanai/", label: "電源が入らないカメラを売る", desc: "動作未確認と故障の切り分けと申告" },
       ]}
     />
   );
