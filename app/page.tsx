@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
+import type { ReactNode } from "react";
 import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
-import { categories, companies, kaitoriCompanies, makers, mounts, platformCompanies, checkedLabelAll} from "@/lib/companies";
+import { categories, companies, getCompany, kaitoriCompanies, makers, mounts, platformCompanies, checkedLabelAll} from "@/lib/companies";
 import { SITE_NAME, SITE_TAGLINE, SITE_URL, OPERATOR } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: `${SITE_NAME}｜${SITE_TAGLINE}`,
+  title: `カメラの売り方｜店頭・宅配・出張・一括査定の違いと掲載${companies.length}社の条件比較｜${SITE_NAME}`,
   description:
-    "フィルムカメラ・オールドレンズ・デジタル一眼・壊れたカメラの買取サービスを公式サイトで一次確認し、査定料・出張料・送料・返送料・入金・古物商許可を確認日つきで比較。価値の見分け方、遺品のカメラの売り方、出張買取のクーリングオフまで中立の視点で整理するカメラ買取ナビです。",
+    `カメラの売り方は店頭・宅配・出張買取と一括査定（ほかにフリマ・下取り）。掲載${companies.length}社がどの方法に対応するかを公式確認し、査定料・送料・返送料・入金を比較。フィルム・オールドレンズ・壊れたカメラの価値の見分け方まで中立の視点で整理します。`,
   alternates: { canonical: "/" },
 };
 
@@ -43,6 +44,40 @@ const guides = [
     href: "/situation/tairyou/",
     label: "大量・コレクションを売る",
     desc: "リスト化・出張と宅配の使い分け・査定内訳",
+  },
+];
+
+/** 売り方別の対応社（各社 methods 欄＝公式記載から。確認日は各社ページに記載） */
+const howToSell: { method: string; fit: string; slugs: string[]; caution: ReactNode }[] = [
+  {
+    method: "店頭買取",
+    fit: "近くに店舗がある・その場で現金化したい・点数が少ない",
+    slugs: ["kitamura", "naniwa", "fujiya", "daikokuya", "janpara", "camera-kaitoriyasan", "camera-takakuureru", "rakuuru"],
+    caution: "ラクウル（ソフマップ）は来店予約制（池袋店・AKIBA駅前館）。店舗によって取り扱いがない品目もあるため、持ち込む前に各社ページで確認。",
+  },
+  {
+    method: "宅配買取",
+    fit: "近くに店舗がない・まとめて送りたい・対面が不要",
+    slugs: ["kitamura", "naniwa", "fujiya", "daikokuya", "janpara", "camera-kaitoriyasan", "camera-takakuureru", "rakuuru", "arrows"],
+    caution: "送料・梱包キットが無料でも、査定に納得できず返してもらうときの返送料は社ごとに違う。申込前に比較表の「返送料」欄を確認。",
+  },
+  {
+    method: "出張買取",
+    fit: "大量・大型機材・遺品整理で運び出せない",
+    slugs: ["kitamura", "naniwa", "daikokuya", "camera-kaitoriyasan", "camera-takakuureru", "uriel"],
+    caution: (
+      <>
+        自宅での買取は特定商取引法の「訪問購入」にあたり、法定の書面を受け取った日から数えて8日以内ならクーリング・オフできる（
+        <a href="https://www.no-trouble.caa.go.jp/what/doortodoorpurchases/" rel="nofollow noopener" target="_blank" className="underline underline-offset-4">消費者庁 特定商取引法ガイド</a>
+        ）。
+      </>
+    ),
+  },
+  {
+    method: "一括査定・比較",
+    fit: "相場が分からない・複数社の金額を並べてから決めたい",
+    slugs: ["minna-no-kaitori", "hikakaku", "oikura"],
+    caution: "サービス自体は買い取らず、実際の売買・送料・キャンセルは見積もりを出した各店の条件になる。",
   },
 ];
 
@@ -102,6 +137,52 @@ export default function HomePage() {
             </Link>
           </div>
         </div>
+      </section>
+
+      {/* 売り方の直接回答 */}
+      <section className="mx-auto max-w-site px-4 pt-16 md:pt-24">
+        <p className="kicker mb-3">HOW TO SELL</p>
+        <h2 className="section-title mb-4">カメラの売り方は4つ（店頭・宅配・出張・一括査定）</h2>
+        <p className="mb-6 max-w-3xl text-sm leading-loose text-steel-600">
+          カメラ・レンズを現金化する方法は、買取店に売る「店頭」「宅配」「出張」と、複数の買取店に見積もりを出してもらう「一括査定」が中心です。ほかに自分で出品するフリマ・オークションと、新しい機材の購入代金から差し引く下取りがあります。掲載{companies.length}社が公式サイトでどの方法に対応しているかを並べると次のとおりです（確認日は各社ページ）。
+        </p>
+        <div className="overflow-x-auto border border-chalk-line">
+          <table className="spec-table">
+            <thead>
+              <tr>
+                <th className="w-28">売り方</th>
+                <th>向く場面</th>
+                <th>対応している掲載社</th>
+                <th>先に確認すること</th>
+              </tr>
+            </thead>
+            <tbody>
+              {howToSell.map((h) => (
+                <tr key={h.method}>
+                  <th>{h.method}</th>
+                  <td className="text-[13px] leading-relaxed">{h.fit}</td>
+                  <td className="text-[13px] leading-relaxed">
+                    {h.slugs.length}社：
+                    {h.slugs.map((slug, i) => (
+                      <span key={slug}>
+                        {i > 0 && "・"}
+                        <Link href={`/kaitori/${slug}/`} className="text-vermilion underline underline-offset-4">
+                          {getCompany(slug).name}
+                        </Link>
+                      </span>
+                    ))}
+                  </td>
+                  <td className="text-[13px] leading-relaxed">{h.caution}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-3 max-w-3xl text-xs leading-relaxed text-steel-500">
+          ※ 各社の「買取方法」欄（公式サイトの記載・{checkedLabelAll()}確認）から集計。ラクウル（ソフマップ）の出張買取は家電・家具3点以上が対象のため出張には含めていません。フジヤカメラの出張引取は法人・プロユース向けページの記載のため除外しています。フリマ・下取りとの使い分けは
+          <Link href="/guide/erabikata/" className="text-vermilion underline underline-offset-4">専門店・総合・出張・フリマの使い分け</Link>
+          で解説しています。
+        </p>
       </section>
 
       {/* カテゴリ導線 */}
