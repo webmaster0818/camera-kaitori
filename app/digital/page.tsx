@@ -47,6 +47,7 @@ const ROUTES: { h: string; links: { href: string; label: string }[] }[] = [
   {
     h: "カメラの種類で選ぶ",
     links: [
+      { href: "/digital/mirrorless/", label: "ミラーレスカメラ（型番・マウント・初期化）" },
       { href: "/digital/compact/", label: "コンパクトデジカメ（コンデジ）" },
       { href: "/film/", label: "フィルムカメラ" },
       { href: "/old-lens/", label: "オールドレンズ・交換レンズ" },

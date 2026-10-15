@@ -581,6 +581,12 @@ export default function CompactDigitalPage() {
               </Link>
             </li>
             <li>
+              <Link href="/digital/mirrorless/" className="block border border-chalk-line bg-chalk-card px-4 py-4 hover:border-vermilion">
+                <span className="font-display text-steel-900">ミラーレスカメラを売る前に</span>
+                <span className="mt-1 block text-xs text-steel-500">型番・マウント・付属品・センサー・初期化の確認</span>
+              </Link>
+            </li>
+            <li>
               <Link href="/broken/" className="block border border-chalk-line bg-chalk-card px-4 py-4 hover:border-vermilion">
                 <span className="font-display text-steel-900">壊れた・ジャンク・カビありを売る</span>
                 <span className="mt-1 block text-xs text-steel-500">動作未確認の申告のコツ</span>
