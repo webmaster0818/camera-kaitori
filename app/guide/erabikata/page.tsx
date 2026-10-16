@@ -331,7 +331,7 @@ export default function ErabikataGuidePage() {
 
         {/* 判断チャート */}
         <section className="mt-14">
-          <h2 className="section-title mb-2">判断チャート：状況に応じた売却方法の選び方</h2>
+          <h2 className="section-title mb-2">状況に応じた売却方法の選び方（判断チャート）</h2>
           <p className="mb-5 max-w-3xl text-sm leading-loose text-steel-600">
             左の状況に近い項目を探し、右の売却方法を検討の出発点としてください。複数に当てはまる場合は、最も価値が高いと考えられる品を基準に選ぶことをおすすめします。
           </p>
