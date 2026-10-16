@@ -1,6 +1,6 @@
 export const SITE_URL = "https://camera-sell.com"; // 本番ドメイン（2026-09-05確定）
 export const SITE_NAME = "カメラ買取ナビ";
-export const SITE_TAGLINE = "売る前の5分で読む、中立のカメラ・レンズ買取ナビ";
+export const SITE_TAGLINE = "公式情報にもとづく中立のカメラ・レンズ買取比較";
 export const CHECKED_DATE = "2026-09-05";
 export const CHECKED_LABEL = "2026年9月5日";
 export const PUBLISHED_DATE = "2026-09-05";

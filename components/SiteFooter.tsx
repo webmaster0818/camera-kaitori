@@ -39,7 +39,7 @@ export default function SiteFooter() {
         </div>
         <div className="grid grid-cols-2 gap-8 md:grid-cols-3 lg:grid-cols-5">
           <FooterCol
-            title="種類別で探す"
+            title="カテゴリ別の買取情報"
             links={[
               ...categories.map((c) => ({ href: c.path, label: c.name })),
               { href: "/compare/", label: "掲載サービスの比較表" },
@@ -47,25 +47,25 @@ export default function SiteFooter() {
             ]}
           />
           <FooterCol
-            title="サービス情報（一次確認）"
+            title="業者別の公式確認情報"
             links={companies.map((c) => ({
               href: `/kaitori/${c.slug}/`,
               label: c.name,
             }))}
           />
           <FooterCol
-            title="状況別・ガイド"
+            title="状況別の売却ガイド"
             links={[
-              { href: "/guide/kachi-mikata/", label: "フィルムカメラ・レンズの価値の見分け方" },
-              { href: "/guide/uru-mae/", label: "売る前の準備（付属品・データ・申告）" },
+              { href: "/guide/kachi-mikata/", label: "フィルムカメラ・オールドレンズの価値の見分け方" },
+              { href: "/guide/uru-mae/", label: "カメラ・レンズを売る前の準備" },
               { href: "/guide/erabikata/", label: "専門店・総合・出張の使い分け" },
-              { href: "/guide/trouble/", label: "買取トラブル対処とクーリングオフ" },
-              { href: "/situation/ihin/", label: "遺品・実家整理のカメラを売る" },
-              { href: "/situation/tairyou/", label: "大量・コレクションを売る" },
+              { href: "/guide/trouble/", label: "カメラ買取のトラブル対処法とクーリングオフ" },
+              { href: "/situation/ihin/", label: "遺品・実家整理で出てきたカメラの売却" },
+              { href: "/situation/tairyou/", label: "カメラ・レンズを大量に売る方法" },
             ]}
           />
           <FooterCol
-            title="サイトについて"
+            title="当サイトについて"
             links={[
               { href: "/about/", label: "運営者情報" },
               { href: "/content-policy/", label: "コンテンツ制作ポリシー" },
@@ -81,13 +81,13 @@ export default function SiteFooter() {
               {OPERATOR.address}
             </p>
             <p className="mt-4 text-xs leading-relaxed text-steel-400">
-              掲載するサービス情報はすべて各社公式サイトを一次確認し、確認日を明記しています。口コミ・体験談の創作は行いません。
+              掲載するサービス情報は、各社の公式サイトで一次確認した内容に限定し、確認日を記載しています。口コミ・体験談の創作は行いません。
             </p>
           </div>
         </div>
         <div className="mt-12 border-t border-steel-700 pt-6 text-xs text-steel-400">
           <p>
-            本サイトはプロモーション（PR）を含みます。掲載内容は確認日時点の各社公式サイトの記載に基づくもので、買取価格や条件は変動します。最新の条件は各社公式サイトでご確認ください。
+            本サイトはプロモーション（PR）を含みます。掲載内容は、確認日時点の各社公式サイトの記載にもとづいています。買取価格や条件は変動するため、ご利用前に各社公式サイトにて最新情報をご確認ください。
           </p>
           <p className="mt-2">
             &copy; {new Date().getFullYear()} {OPERATOR.name}

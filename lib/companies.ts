@@ -110,7 +110,7 @@ export const categories: Category[] = [
     path: "/film/",
     name: "フィルムカメラの買取",
     short: "フィルムカメラ",
-    lead: "一眼レフ・レンジファインダー・二眼レフ・中判。動作未確認でも価値判断の対象になるフィルムカメラの見分け方と、対応業者の条件を一次確認で整理しました。",
+    lead: "一眼レフ・レンジファインダー・二眼レフ・中判などのフィルムカメラは、動作未確認でも価値判断の対象になります。見分け方と対応業者の条件を、公式サイトでの一次確認にもとづき整理しています。",
     companySlugs: ["uriel", "camera-kaitoriyasan", "arrows", "kitamura", "fujiya", "naniwa", "daikokuya", "janpara"],
   },
   {
@@ -118,7 +118,7 @@ export const categories: Category[] = [
     path: "/old-lens/",
     name: "オールドレンズの買取",
     short: "オールドレンズ",
-    lead: "マウント・焦点距離・明るさで評価が分かれるオールドレンズ。カビ・くもりの申告のしかたと、レンズ単体を受け付ける業者の条件をまとめました。",
+    lead: "オールドレンズは、マウント・焦点距離・明るさによって評価が分かれます。カビ・くもりの申告方法と、レンズ単体を受け付ける業者の条件をまとめています。",
     companySlugs: ["uriel", "camera-kaitoriyasan", "arrows", "kitamura", "fujiya", "naniwa", "daikokuya"],
   },
   {
@@ -126,7 +126,7 @@ export const categories: Category[] = [
     path: "/digital/",
     name: "デジタル一眼・ミラーレスの買取",
     short: "デジタル",
-    lead: "現行機・型落ち機は相場の動きが速いカテゴリです。シャッター回数・付属品・データ削除など売る前の準備と、宅配買取の条件を整理しました。",
+    lead: "現行機・型落ち機は相場の動きが速いカテゴリです。シャッター回数・付属品・データ削除など売る前の準備と、宅配買取の条件を整理しています。",
     companySlugs: ["camera-kaitoriyasan", "arrows", "uriel", "kitamura", "fujiya", "naniwa", "daikokuya", "janpara", "rakuuru", "camera-takakuureru"],
   },
   {
@@ -134,7 +134,7 @@ export const categories: Category[] = [
     path: "/broken/",
     name: "壊れた・ジャンク・カビありを売る",
     short: "壊れた・ジャンク",
-    lead: "動かないカメラ、カビやくもりのあるレンズも、部品取りや修理前提で査定対象になる場合があります。0円回避のための申告のコツと、故障品受付を公式に明記する業者を整理しました。",
+    lead: "動かないカメラ、カビやくもりのあるレンズも、部品取りや修理前提で査定対象になる場合があります。査定額が0円となることを避けるための申告方法と、故障品の受付を公式に明記している業者を整理しています。",
     companySlugs: ["camera-kaitoriyasan", "uriel", "daikokuya", "camera-takakuureru"],
   },
 ];
@@ -152,7 +152,7 @@ export function categoriesOf(company: Company): Category[] {
 /** 業者詳細ページ用FAQ（データからのみ生成・創作なし） */
 export function companyFaq(c: Company): { q: string; a: string }[] {
   const naAnswer = (item: string) =>
-    `${item}については、公式サイトでは確認できませんでした（${c.confirmed_date}時点の当サイト調査）。申込前に${c.name}へ直接確認することをおすすめします。`;
+    `${item}については、公式サイトでは確認できませんでした（${c.confirmed_date}時点の当サイト調査）。申込前に${c.name}へ直接ご確認ください。`;
   return [
     {
       q: `${c.name}の査定料・出張料はかかりますか？`,
@@ -170,13 +170,13 @@ export function companyFaq(c: Company): { q: string; a: string }[] {
       q: `${c.name}は査定額に納得できなかったらキャンセルできますか？返送料は？`,
       a: isNA(c.cancel)
         ? naAnswer("キャンセル規定・返送料")
-        : `公式サイトの記載では「${c.cancel}」、返送料は「${fmt(c.hiyou.hensou)}」とされています（${c.confirmed_date}確認）。実際の条件は必ず申込時の規約で確認してください。`,
+        : `公式サイトの記載では「${c.cancel}」、返送料は「${fmt(c.hiyou.hensou)}」とされています（${c.confirmed_date}確認）。実際の条件は、必ず申込時の規約にてご確認ください。`,
     },
     {
       q: `${c.name}は壊れたカメラやカビのあるレンズも買い取りますか？`,
       a: isNA(c.broken)
         ? naAnswer("故障品・ジャンク品の取り扱い")
-        : `公式サイトの記載では「${c.broken}」とされています（${c.confirmed_date}確認）。状態は申込時に正確に申告してください。`,
+        : `公式サイトの記載では「${c.broken}」とされています（${c.confirmed_date}確認）。状態は、申込時に正確にご申告ください。`,
     },
   ];
 }
@@ -198,7 +198,7 @@ export const makers: Category[] = [
     path: "/maker/canon/",
     name: "キヤノンのカメラ買取",
     short: "キヤノン",
-    lead: "FDマウントのフィルム機からEF・RFマウントのデジタル機まで。世代とマウントの見分け方、売る前に確認しておく項目を整理しました。",
+    lead: "FDマウントのフィルム機から、EF・RFマウントのデジタル機までを対象に、世代とマウントの見分け方と、売る前に確認する項目を整理しています。",
     companySlugs: ["uriel", "camera-kaitoriyasan", "arrows", "kitamura", "fujiya", "naniwa", "daikokuya", "janpara", "rakuuru", "camera-takakuureru"],
   },
   {
@@ -206,7 +206,7 @@ export const makers: Category[] = [
     path: "/maker/nikon/",
     name: "ニコンのカメラ買取",
     short: "ニコン",
-    lead: "長く続いたFマウントとミラーレスのZマウント。レンズの世代表記（Ai・AF-S・G・E）の読み方と、売る前の確認項目をまとめました。",
+    lead: "長く続いたFマウントと、ミラーレスのZマウントを対象に、レンズの世代表記（Ai・AF-S・G・E）の読み方と、売る前の確認項目をまとめています。",
     companySlugs: ["uriel", "camera-kaitoriyasan", "arrows", "kitamura", "fujiya", "naniwa", "daikokuya", "janpara", "rakuuru", "camera-takakuureru"],
   },
   {
@@ -214,7 +214,7 @@ export const makers: Category[] = [
     path: "/maker/sony/",
     name: "ソニーのカメラ買取",
     short: "ソニー",
-    lead: "Eマウントのミラーレスとミノルタ由来のAマウント。世代交代が速いデジタル機を売る前に確認しておきたい項目を整理しました。",
+    lead: "Eマウントのミラーレスと、ミノルタ由来のAマウントを対象に、世代交代が速いデジタル機を売る前に確認する項目を整理しています。",
     companySlugs: ["uriel", "camera-kaitoriyasan", "arrows", "kitamura", "fujiya", "naniwa", "daikokuya", "janpara", "rakuuru", "camera-takakuureru"],
   },
   {
@@ -222,7 +222,7 @@ export const makers: Category[] = [
     path: "/maker/fujifilm/",
     name: "富士フイルムのカメラ買取",
     short: "富士フイルム",
-    lead: "XマウントのミラーレスとGFXシリーズ、そして中判フィルム機まで。レンズ一体型機の扱いを含めた確認項目をまとめました。",
+    lead: "XマウントのミラーレスとGFXシリーズ、中判フィルム機を対象に、レンズ一体型機の扱いを含めた確認項目をまとめています。",
     companySlugs: ["uriel", "camera-kaitoriyasan", "arrows", "kitamura", "fujiya", "naniwa", "daikokuya", "janpara", "rakuuru", "camera-takakuureru"],
   },
 ];
@@ -247,7 +247,7 @@ export const mounts: Category[] = [
     path: "/mount/m42/",
     name: "M42マウントのレンズ買取",
     short: "M42マウント",
-    lead: "ねじ込み式のスクリューマウント。バヨネットとの見分け方、絞りピンの確認、アダプター事情と、売るときに伝えておく項目を整理しました。",
+    lead: "M42は、ねじ込み式のスクリューマウントです。バヨネットとの見分け方、絞りピンの確認、マウントアダプターの利用状況、売却時に伝える項目を整理しています。",
     companySlugs: ["uriel", "camera-kaitoriyasan", "arrows", "kitamura", "fujiya", "naniwa", "daikokuya", "janpara", "rakuuru", "camera-takakuureru"],
   },
   {
@@ -255,7 +255,7 @@ export const mounts: Category[] = [
     path: "/mount/leica-m/",
     name: "ライカMマウントのレンズ買取",
     short: "ライカMマウント",
-    lead: "距離計連動のバヨネット規格。Lマウント（スクリュー）との関係、連動カムの確認、付属品の探し方をまとめました。",
+    lead: "ライカMマウントは、距離計連動のバヨネット規格です。Lマウント（スクリュー）との関係、連動カムの確認、付属品の探し方をまとめています。",
     companySlugs: ["uriel", "camera-kaitoriyasan", "arrows", "kitamura", "fujiya", "naniwa", "daikokuya", "janpara", "rakuuru", "camera-takakuureru"],
   },
   {
@@ -263,7 +263,7 @@ export const mounts: Category[] = [
     path: "/mount/micro-four-thirds/",
     name: "マイクロフォーサーズのレンズ買取",
     short: "マイクロフォーサーズ",
-    lead: "複数社が共有するミラーレス用の規格。フォーサーズとの違い、電子接点まわりの確認、アダプター母艦としての性格を整理しました。",
+    lead: "マイクロフォーサーズは、複数社が共有するミラーレス用の規格です。フォーサーズとの違い、電子接点まわりの確認、マウントアダプターで他社レンズを使うボディとしての特性を整理しています。",
     companySlugs: ["uriel", "camera-kaitoriyasan", "arrows", "kitamura", "fujiya", "naniwa", "daikokuya", "janpara", "rakuuru", "camera-takakuureru"],
   },
   {
@@ -271,7 +271,7 @@ export const mounts: Category[] = [
     path: "/mount/f-mount/",
     name: "ニコンFマウントのレンズ買取",
     short: "ニコンFマウント",
-    lead: "長期間使われた一眼レフ用バヨネット。連動方式が機械式から電子式へ変わった規格そのものの特徴と、伝えるべき項目をまとめました。",
+    lead: "ニコンFマウントは、長期間使われた一眼レフ用のバヨネット規格です。連動方式が機械式から電子式へ変わった規格の特徴と、売却時に伝える項目をまとめています。",
     companySlugs: ["uriel", "camera-kaitoriyasan", "arrows", "kitamura", "fujiya", "naniwa", "daikokuya", "janpara", "rakuuru", "camera-takakuureru"],
   },
 ];
