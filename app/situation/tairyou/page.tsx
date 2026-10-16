@@ -240,9 +240,9 @@ export default function TairyouSituationPage() {
           長年集めたコレクションの整理、撮影システムの一括入れ替え、スタジオの機材処分など、カメラやレンズを大量に売る際は、一点を売る場合とは異なる準備が必要です。本ページでは、大量売却の3つのパターン、一括で出すか小分けにするかの考え方、リスト化の方法、出張と宅配の使い分け、査定内訳の確認の重要性、法人の場合の書類、輸送の注意点を、一般知識としてご説明します。
         </p>
 
-        {/* 要点 */}
+        {/* 冒頭の要点 */}
         <section className="mt-10 border-2 border-vermilion bg-chalk-warm p-6">
-          <h2 className="font-display text-lg text-steel-900">要点</h2>
+          <h2 className="font-display text-lg text-steel-900">大量売却の進め方を決める判断材料</h2>
           <ul className="mt-4 space-y-3">
             {conclusions.map((c) => (
               <li key={c} className="flex gap-2 text-sm leading-loose text-steel-800">

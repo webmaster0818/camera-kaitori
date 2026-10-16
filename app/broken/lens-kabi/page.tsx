@@ -278,9 +278,9 @@ export default function LensKabiPage() {
           レンズを明るい方に向けた際に、内部に白い筋やもやが見えることがあります。それがカビか、くもりか、別のものかがわからないまま手放してよいのか、拭いてから出すべきか、判断に迷う方は少なくありません。本ページでは、レンズの内部に見える症状の一般的な見分け方、ご自身で清掃・分解しないほうがよい理由、症状を写真と文章で申告する方法、宅配で送る前の確認事項をご説明します。症状の名称を特定することよりも、見えたものを正確に伝えることを重視しています。
         </p>
 
-        {/* 要点 */}
+        {/* 冒頭の要点 */}
         <section className="mt-10 border-2 border-vermilion bg-chalk-warm p-6">
-          <h2 className="font-display text-lg text-steel-900">要点</h2>
+          <h2 className="font-display text-lg text-steel-900">レンズの症状の確認方法と申告・宅配前の確認事項</h2>
           <ul className="mt-4 space-y-3">
             {conclusions.map((c) => (
               <li key={c} className="flex gap-2 text-sm leading-loose text-steel-800">

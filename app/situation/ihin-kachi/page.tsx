@@ -257,9 +257,9 @@ export default function IhinKachiPage() {
           遺品の中からカメラやレンズが見つかっても、カメラに詳しくないご家族にとって、それが何であるかを判断することは容易ではありません。本ページでは、評価を行うためではなく、「何が、どのような状態で、何と一緒に残っているか」をご家族が把握するための手順を、一般知識として整理しています。型番や刻印の探し方、付属品の扱い、レンズの見方の基本、触らずに確認できること、記録の残し方、不明な点が残る場合の相談の進め方についてご説明します。すべてを一度に進める必要はありません。
         </p>
 
-        {/* 要点 */}
+        {/* 冒頭の要点 */}
         <section className="mt-10 border-2 border-vermilion bg-chalk-warm p-6">
-          <h2 className="font-display text-lg text-steel-900">要点</h2>
+          <h2 className="font-display text-lg text-steel-900">故人のカメラを調べる際にご家族が行うこと</h2>
           <ul className="mt-4 space-y-3">
             {conclusions.map((c) => (
               <li key={c} className="flex gap-2 text-sm leading-loose text-steel-800">

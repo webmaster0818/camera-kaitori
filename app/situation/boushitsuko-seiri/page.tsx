@@ -241,9 +241,9 @@ export default function BoushitsukoSeiriPage() {
           押し入れから防湿庫が見つかった場合や、物置に中身の入ったカメラバッグが残されていた場合など、収納ごと機材が出てくると、何が何点あるのかを把握できず、作業が滞りがちです。本ページでは、収納ごと出てきた場合に最初に行うこと、ボディ・レンズ・アクセサリー・消耗品の4分類による区分、カビの見分け方、値段が付きにくい物の扱い、まとめて相談する際の伝達事項を、一般知識としてご説明します。点数が多い場合の進め方は、大量売却のページでご説明しています。
         </p>
 
-        {/* 要点 */}
+        {/* 冒頭の要点 */}
         <section className="mt-10 border-2 border-vermilion bg-chalk-warm p-6">
-          <h2 className="font-display text-lg text-steel-900">要点</h2>
+          <h2 className="font-display text-lg text-steel-900">収納ごと出てきた機材の初期対応</h2>
           <ul className="mt-4 space-y-3">
             {conclusions.map((c) => (
               <li key={c} className="flex gap-2 text-sm leading-loose text-steel-800">

@@ -258,9 +258,9 @@ export default function KoujinFilmDataPage() {
           遺品のカメラにフィルムが入ったままだった、バッグからメモリーカードが何枚も出てきた、といった場面では、カメラを手放す前に中の写真をどう扱うかを決める必要があります。写真とデータは、機材とは別のものとして扱う必要があります。本ページでは、出てきたものの種類ごとの扱い、未現像フィルムが出てきたときの選択肢、メモリーカードの扱い、機材を手放す前にデータを取り出す手順、そして家族以外の手に渡らないようにするための配慮を、一般知識として整理します。
         </p>
 
-        {/* 要点 */}
+        {/* 冒頭の要点 */}
         <section className="mt-10 border-2 border-vermilion bg-chalk-warm p-6">
-          <h2 className="font-display text-lg text-steel-900">要点</h2>
+          <h2 className="font-display text-lg text-steel-900">機材を手放す前に写真とデータを手元に残す手順</h2>
           <ul className="mt-4 space-y-3">
             {conclusions.map((c) => (
               <li key={c} className="flex gap-2 text-sm leading-loose text-steel-800">

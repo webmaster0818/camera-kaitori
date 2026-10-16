@@ -279,9 +279,9 @@ export default function DengenHairanaiPage() {
           保管していたデジタルカメラの電源が入らない、電源は入るがエラー表示が消えない、背面の液晶が映らない、電池を使うフィルムカメラのシャッターが動かないといった場合でも、値段が付かないと判断する前に確認できることがあります。本ページでは、道具を使わずに目視で確認できる範囲の確認、「動作未確認」と「故障」の区別、メモリーカードの扱い、宅配で送る前に業者の条件で確認すべき事項を、一般知識と当サイト掲載社の公式記載にもとづいてご説明します。修理の可否や通電の安全性についての判断は示しません。
         </p>
 
-        {/* 要点 */}
+        {/* 冒頭の要点 */}
         <section className="mt-10 border-2 border-vermilion bg-chalk-warm p-6">
-          <h2 className="font-display text-lg text-steel-900">要点</h2>
+          <h2 className="font-display text-lg text-steel-900">電源が入らないカメラを故障と判断する前の確認と申告方法</h2>
           <ul className="mt-4 space-y-3">
             {conclusions.map((c) => (
               <li key={c} className="flex gap-2 text-sm leading-loose text-steel-800">
