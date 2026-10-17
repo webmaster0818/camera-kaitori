@@ -1,21 +1,45 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import CategoryHub from "@/components/CategoryHub";
-import { getCategory } from "@/lib/companies";
+import ConditionTable from "@/components/ConditionTable";
+import JsonLd from "@/components/JsonLd";
+import { getCategory, getCompany, mounts } from "@/lib/companies";
+import { SITE_NAME, SITE_URL, OPERATOR } from "@/lib/site";
+
+const TITLE = "オールドレンズの買取｜レンズ単体・カビありの受付条件と掲載7社の公式記載比較【2026年10月更新】";
+const DESC =
+  "オールドレンズをレンズ単体・カビやくもりのある状態で売れるかを、掲載7社の公式記載（買取方法・故障やカビの扱い・キャンセル時の返送料）で比較しています。マウントと刻印の確認方法、相場の調べ方もまとめています（2026年10月17日更新）。";
+const PATH = "/old-lens/";
+const PAGE_UPDATED = "2026-10-17";
 
 export const metadata: Metadata = {
-  title: "オールドレンズの買取｜マウント・状態の見方とレンズ単体を受け付けるサービスの条件",
-  description:
-    "オールドレンズの売却前の判断ポイント（マウント・焦点距離と開放F値・カビ・くもり・バルサム切れ）と、レンズ単体を扱う買取サービスの査定料・送料・返送料・入金を、公式サイトでの一次確認にもとづき比較しています。確認日（2026年9月5日）を明記しています。",
-  alternates: { canonical: "/old-lens/" },
+  title: TITLE,
+  description: DESC,
+  alternates: { canonical: PATH },
+};
+
+const articleLd = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: TITLE,
+  description: DESC,
+  dateModified: PAGE_UPDATED,
+  mainEntityOfPage: `${SITE_URL}${PATH}`,
+  author: { "@type": "Organization", name: OPERATOR.name },
+  publisher: { "@type": "Organization", name: SITE_NAME },
 };
 
 export default function OldLensPage() {
   const cat = getCategory("old-lens");
+  const rows = cat.companySlugs.map((slug) => getCompany(slug));
   return (
+    <>
+    <JsonLd data={articleLd} />
     <CategoryHub
       cat={cat}
       kicker="OLD LENS"
-      h1="オールドレンズの買取｜相談前に確認したいマウントと状態"
+      h1="オールドレンズの買取｜レンズ単体・カビありの受付条件と売る前の確認事項"
+      updated={PAGE_UPDATED}
       intro="オールドレンズは、デジタルカメラにマウントアダプターを介して装着する楽しみ方が広がり、古いレンズにも評価の対象となるものがあります。ただし、評価はマウントの種類、焦点距離と明るさ、カビ・くもり・バルサム切れの有無によって大きく異なります。本ページでは、オールドレンズの売却前に確認したい一般的な判断ポイントと、レンズ単体を対象と公式サイトに記載している掲載サービスの条件をご説明します。買取価格は状態と時期により変動するため、当サイトでは金額を掲載しておりません。"
       points={[
         {
@@ -51,12 +75,20 @@ export default function OldLensPage() {
       ]}
       faqs={[
         {
+          q: "ボディがなく、オールドレンズだけでも売れますか？",
+          a: "レンズ単体での受付を公式サイトに明記している業者があります。大黒屋は「ボディ単体・レンズ単体でもお買取りしております」と記載しています（2026年10月17日確認）。他の掲載サービスもレンズを対象品目に含めていますが、オールドレンズの扱いは各社で異なるため、申込前に対象一覧をご確認ください。",
+        },
+        {
           q: "カビのあるレンズでも売れますか？",
-          a: "カビ・くもりの扱いは業者によって異なります。ウリエルは「カビ・ホコリ・曇り」がある品も査定対象として公式サイトに記載し、カメラの買取屋さんは「壊れていても買取OK」と記載しています。カメラ買取アローズはジャンク品の買取不可を明記しています（いずれも2026年9月5日確認）。程度により値段が付かない場合があることも各社が記載しているため、状態を申告のうえご相談ください。",
+          a: "カビ・くもりの扱いは業者によって異なります。大黒屋は「カビやくもりのあるオールドレンズもお買取りの対象です」と公式サイトに記載しています（2026年10月17日確認）。ウリエルは「カビ・ホコリ・曇り」がある品も査定対象として記載し、カメラ買取アローズはジャンク品の買取不可を明記しています（いずれも2026年9月5日確認）。程度により値段が付かない場合があることも各社が記載しているため、状態を申告のうえご相談ください。",
         },
         {
           q: "マウントがわからない場合はどうすればよいですか？",
           a: "レンズ名・焦点距離・開放F値の刻印と、マウント部の写真を用意しておくと、業者側で判別できるのが一般的です。価値の見分け方ガイドで主なマウントの特徴を整理しています。",
+        },
+        {
+          q: "オールドレンズの買取相場はどう調べればよいですか？",
+          a: "刻印どおりのレンズ名・焦点距離・開放F値・マウントで検索し、買取実績や買取価格表を確認します。実績の金額はその個体の状態と買取日の時点のもので、価格表の上限額は状態が良く付属品がそろった個体が前提であることが一般的です。お持ちのレンズと状態・付属品・時期が近い例を目安にし、同じ情報で2〜3社に見積もりを依頼すると比較しやすくなります。",
         },
         {
           q: "オールドレンズを大量に売りたい場合はどうすればよいですか？",
@@ -74,6 +106,60 @@ export default function OldLensPage() {
         { href: "/mount/f-mount/", label: "ニコンFマウントのレンズ買取", desc: "一眼レフ用バヨネットの仕様の幅" },
         { href: "/broken/lens-kabi/", label: "カビ・くもりのあるレンズの売却", desc: "カビの確認方法と申告・梱包の注意" },
       ]}
-    />
+    >
+      <div className="mt-6 max-w-3xl border-l-4 border-vermilion bg-chalk-card px-5 py-4">
+        <p className="text-sm leading-loose text-steel-800">
+          オールドレンズは、ボディがなくてもレンズ単体で買取に出せます。大黒屋は「カビやくもりのあるオールドレンズもお買取りの対象です」「ボディ単体・レンズ単体でもお買取りしております」と公式サイトに記載しています（2026年10月17日確認）。一方で、カメラ買取アローズはジャンク品を買取不可と明記しており（2026年9月5日確認）、カビ・故障品の扱いは業者によって異なります。
+        </p>
+        <p className="mt-2 text-sm leading-loose text-steel-800">
+          売る前に、刻印でマウント・レンズ名（焦点距離と開放F値）を確かめ、カビ・くもり・絞りの動きを把握したうえで、下表の受付条件とキャンセル時の返送料を2〜3社で比べるのが基本です。
+        </p>
+      </div>
+
+      <section className="mt-12">
+        <h2 className="section-title mb-2">オールドレンズの受付条件とキャンセル時の返送料（公式記載）</h2>
+        <p className="mb-5 text-sm leading-loose text-steel-600">
+          本カテゴリの掲載7社について、買取方法、故障品・カビ・付属品欠品の扱い、査定後にキャンセルした場合の返送料を、各社公式サイトの記載から要約しました。「公式では確認できず」は、該当する記載を公式サイト上で確認できなかった項目です。
+        </p>
+        <ConditionTable rows={rows} brokenLabel="故障・カビ・付属品の扱い" />
+      </section>
+
+      <section className="mt-12">
+        <h2 className="section-title mb-5">マウント別の確認ページ</h2>
+        <div className="grid gap-4 md:grid-cols-2">
+          {mounts.map((m) => (
+            <Link key={m.slug} href={m.path} className="block border border-chalk-line bg-chalk-card p-5 hover:border-vermilion">
+              <span className="font-display text-base text-steel-900">{m.short}</span>
+              <span className="mt-2 block text-[13px] leading-loose text-steel-700">{m.lead}</span>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      <section className="mt-12">
+        <h2 className="section-title mb-5">オールドレンズの買取相場の調べ方</h2>
+        <div className="space-y-4 text-[13px] leading-loose text-steel-700">
+          <p>
+            <strong className="text-steel-900">1. 刻印のとおりにレンズを特定する</strong>
+            同じ焦点距離でも、開放F値、マウント、製造時期による設計の違いで別のレンズとして扱われます。前面や鏡筒の刻印を書き写し、マウントも含めて調べます。
+          </p>
+          <p>
+            <strong className="text-steel-900">2. 買取実績は状態と日付を確認して読む</strong>
+            買取業者の中には買取実績や買取価格表を公開しているところがあります。実績の金額はその個体の状態と買取日の時点のものなので、カビ・くもりの有無や付属品が近い例を目安にします。
+          </p>
+          <p>
+            <strong className="text-steel-900">3. 「上限」の表記と中古販売価格を区別する</strong>
+            価格表の上限額は、状態が良く付属品がそろった個体を前提にしていることが一般的です。中古販売価格は整備や保証の費用を含むため、買取額とは一致しません。
+          </p>
+          <p>
+            <strong className="text-steel-900">4. 同じ情報で2〜3社に見積もりを依頼する</strong>
+            レンズ名・マウント・状態・付属品・写真を同じ内容でそろえて依頼すると、見積もりの差を比較しやすくなります。カビの見分け方は
+            <Link href="/broken/lens-kabi/" className="text-vermilion underline underline-offset-4">カビ・くもりのあるレンズの売却</Link>
+            で説明しています。
+          </p>
+        </div>
+      </section>
+    </CategoryHub>
+    </>
   );
 }

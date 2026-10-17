@@ -1,21 +1,45 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import CategoryHub from "@/components/CategoryHub";
-import { getCategory } from "@/lib/companies";
+import ConditionTable from "@/components/ConditionTable";
+import JsonLd from "@/components/JsonLd";
+import { getCategory, getCompany } from "@/lib/companies";
+import { SITE_NAME, SITE_URL, OPERATOR } from "@/lib/site";
+
+const TITLE = "フィルムカメラの買取｜動かない・古い機種の受付条件と掲載8社の公式記載比較【2026年10月更新】";
+const DESC =
+  "動かない・古いフィルムカメラを買取に出せるかを、掲載8社の公式記載（買取方法・故障品の扱い・キャンセル時の返送料）で比較しています。機種名の確認、中のフィルムや電池の扱い、相場の調べ方もまとめています（2026年10月17日更新）。";
+const PATH = "/film/";
+const PAGE_UPDATED = "2026-10-17";
 
 export const metadata: Metadata = {
-  title: "フィルムカメラの買取｜価値の見分け方と対応サービスの条件比較",
-  description:
-    "フィルムカメラ（一眼レフ・レンジファインダー・二眼レフ・中判）の売却前の判断ポイントと、対象の買取サービスの査定料・出張料・送料・返送料・入金を、公式サイトでの一次確認にもとづき比較しています。確認日（2026年9月5日）を明記しています。",
-  alternates: { canonical: "/film/" },
+  title: TITLE,
+  description: DESC,
+  alternates: { canonical: PATH },
+};
+
+const articleLd = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: TITLE,
+  description: DESC,
+  dateModified: PAGE_UPDATED,
+  mainEntityOfPage: `${SITE_URL}${PATH}`,
+  author: { "@type": "Organization", name: OPERATOR.name },
+  publisher: { "@type": "Organization", name: SITE_NAME },
 };
 
 export default function FilmPage() {
   const cat = getCategory("film");
+  const rows = cat.companySlugs.map((slug) => getCompany(slug));
   return (
+    <>
+    <JsonLd data={articleLd} />
     <CategoryHub
       cat={cat}
       kicker="FILM CAMERA"
-      h1="フィルムカメラの買取｜相談前に確認したい売却可否の判断ポイント"
+      h1="フィルムカメラの買取｜動かない・古い機種の受付条件と売る前の確認事項"
+      updated={PAGE_UPDATED}
       intro="実家の押し入れから出てきた一眼レフ、形見のレンジファインダー、二眼レフや中判カメラなど、フィルムカメラは製造から数十年が経過していても、機種・状態・付属品によって評価の対象となることがあります。一方で、動作を確認しないまま故障品と判断して処分してしまうケースも少なくありません。本ページでは、フィルムカメラの売却前に確認したい一般的な判断ポイントと、フィルムカメラを対象と公式サイトに記載している掲載サービスの条件をご説明します。買取価格は状態と時期により大きく変わるため、当サイトでは金額を掲載しておりません。"
       points={[
         {
@@ -56,7 +80,15 @@ export default function FilmPage() {
         },
         {
           q: "動かないフィルムカメラはどうすればよいですか？",
-          a: "故障品の受付は業者によって異なります。カメラの買取屋さんは「壊れていても買取OK」と公式サイトに記載し、カメラ買取アローズはジャンク品の買取不可を明記しています（2026年9月5日確認）。故障品の受付を明記している業者と申告の方法は、壊れたカメラ・ジャンク品の買取ハブで整理しています。",
+          a: "故障品の受付は業者によって異なります。カメラの買取屋さんは「壊れていても買取OK」、大黒屋は「年代物のフィルムカメラや一部パーツが壊れたカメラ」も買取の対象と公式サイトに記載しています（2026年10月17日確認）。カメラ買取アローズはジャンク品の買取不可を明記し（2026年9月5日確認）、じゃんぱらは「基本的に通常正常動作品のみ買取対象」としています（2026年9月11日確認）。故障品の受付を明記している業者と申告の方法は、壊れたカメラ・ジャンク品の買取ハブで整理しています。",
+        },
+        {
+          q: "未使用・期限切れのフィルムも一緒に売れますか？",
+          a: "業者によって異なります。カメラのナニワは公式FAQで「フイルムは買取できません」と明記しています（2026年9月11日確認）。他の掲載サービスについてはフィルム単体の扱いを確認できなかったため、申込前に各社へお問い合わせください。",
+        },
+        {
+          q: "フィルムカメラの買取相場はどう調べればよいですか？",
+          a: "メーカー名と機種名（レンズ付きの場合はレンズ名も）で検索し、買取実績や買取価格表を確認します。実績の金額はその個体の状態と買取日の時点のもので、価格表の上限額は状態が良く付属品がそろった個体が前提であることが一般的です。動作の可否・モルトの劣化・カビの有無が近い例を目安にし、同じ情報で2〜3社に見積もりを依頼すると比較しやすくなります。",
         },
         {
           q: "運び出せない量のフィルムカメラがあります。どうすればよいですか？",
@@ -66,9 +98,52 @@ export default function FilmPage() {
       guides={[
         { href: "/guide/kachi-mikata/", label: "フィルムカメラ・オールドレンズの価値の見分け方", desc: "機種・状態・付属品など、売却前に確認する7つのポイント" },
         { href: "/guide/uru-mae/", label: "カメラ・レンズを売る前の準備", desc: "付属品・状態申告・梱包の要点" },
+        { href: "/old-lens/", label: "オールドレンズの買取", desc: "レンズ単体・カビありの受付条件" },
         { href: "/situation/ihin/", label: "遺品・実家整理で出てきたカメラの売却", desc: "処分前の確認事項と出張買取の利用方法" },
         { href: "/guide/trouble/", label: "カメラ買取のトラブル対処法", desc: "出張買取のクーリングオフと相談先（188）" },
       ]}
-    />
+    >
+      <div className="mt-6 max-w-3xl border-l-4 border-vermilion bg-chalk-card px-5 py-4">
+        <p className="text-sm leading-loose text-steel-800">
+          製造から数十年が経ったフィルムカメラや、シャッターが切れないなど動作に不具合のあるフィルムカメラも、買取の対象とする業者があります。カメラの買取屋さんは「壊れていても買取OK」、大黒屋は「年代物のフィルムカメラや一部パーツが壊れたカメラ」も買取の対象と公式サイトに記載しています（2026年10月17日確認）。一方で、カメラ買取アローズはジャンク品を買取不可（2026年9月5日確認）、じゃんぱらは「基本的に通常正常動作品のみ買取対象」（2026年9月11日確認）としており、動かない機材の扱いは業者によって異なります。
+        </p>
+        <p className="mt-2 text-sm leading-loose text-steel-800">
+          売る前に、機種名を刻印で確かめ、中にフィルムが残っていないか、電池が液漏れしていないかを確認したうえで、下表の受付条件とキャンセル時の返送料を2〜3社で比べるのが基本です。
+        </p>
+      </div>
+
+      <section className="mt-12">
+        <h2 className="section-title mb-2">フィルムカメラの受付条件とキャンセル時の返送料（公式記載）</h2>
+        <p className="mb-5 text-sm leading-loose text-steel-600">
+          本カテゴリの掲載8社について、買取方法、故障品・付属品欠品の扱い、査定後にキャンセルした場合の返送料を、各社公式サイトの記載から要約しました。「公式では確認できず」は、該当する記載を公式サイト上で確認できなかった項目です。
+        </p>
+        <ConditionTable rows={rows} brokenLabel="故障品・カビ・付属品の扱い" />
+      </section>
+
+      <section className="mt-12">
+        <h2 className="section-title mb-5">フィルムカメラの買取相場の調べ方</h2>
+        <div className="space-y-4 text-[13px] leading-loose text-steel-700">
+          <p>
+            <strong className="text-steel-900">1. メーカー名と機種名を特定する</strong>
+            同じシリーズでも世代や仕様違いで別の機種として扱われます。軍艦部や底面の刻印で機種名を確かめ、レンズが付いている場合はレンズ名も控えます。
+          </p>
+          <p>
+            <strong className="text-steel-900">2. 買取実績は状態と日付を確認して読む</strong>
+            買取業者の中には買取実績や買取価格表を公開しているところがあります。実績の金額はその個体の状態と買取日の時点のものなので、動作の可否・モルトの劣化・カビの有無が近い例を目安にします。
+          </p>
+          <p>
+            <strong className="text-steel-900">3. 「上限」の表記と中古販売価格を区別する</strong>
+            価格表の上限額は、状態が良く付属品がそろった個体を前提にしていることが一般的です。中古販売価格は整備や保証の費用を含むため、買取額とは一致しません。
+          </p>
+          <p>
+            <strong className="text-steel-900">4. 同じ情報で2〜3社に見積もりを依頼する</strong>
+            機種名・状態・付属品・写真を同じ内容でそろえて依頼すると、見積もりの差を比較しやすくなります。古い機材の見方は
+            <Link href="/guide/kachi-mikata/" className="text-vermilion underline underline-offset-4">フィルムカメラ・オールドレンズの価値の見分け方</Link>
+            で説明しています。
+          </p>
+        </div>
+      </section>
+    </CategoryHub>
+    </>
   );
 }
