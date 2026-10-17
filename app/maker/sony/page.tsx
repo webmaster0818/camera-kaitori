@@ -89,6 +89,7 @@ export default function SonyPage() {
       ]}
       guides={[
         { href: "/guide/uru-mae/", label: "カメラ・レンズを売る前の準備", desc: "付属品・メモリーカード・データ削除・状態申告" },
+        { href: "/digital/mirrorless/", label: "ミラーレスカメラ買取前の確認事項", desc: "Eマウント機の型番・マウント・初期化の確認" },
         { href: "/guide/kachi-mikata/", label: "フィルムカメラ・オールドレンズの価値の見分け方", desc: "メーカー・機種・マウント・状態の見方" },
         { href: "/guide/erabikata/", label: "専門店・総合買取・出張買取・フリマの使い分け", desc: "売り方の仕組みと買取先の選び方" },
         { href: "/guide/trouble/", label: "カメラ買取のトラブル対処法", desc: "出張買取のクーリングオフと相談先（188）" },
