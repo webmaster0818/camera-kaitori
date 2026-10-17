@@ -36,8 +36,8 @@ export async function generateMetadata({
   const isPlatform = c.kind === "platform";
   return {
     title: c.page_title ? c.page_title : isPlatform
-      ? `${c.name}の仕組みと利用条件｜利用料・流れ・運営会社【2026年9月公式確認】`
-      : `${c.name}${c.name.endsWith("買取") ? "の利用条件" : "の買取条件"}｜査定料・出張料・送料・入金・ジャンク対応【2026年9月公式確認】`,
+      ? `${c.name}の仕組みと利用条件｜利用料・流れ・運営会社【公式確認】`
+      : `${c.name}${c.name.endsWith("買取") ? "の利用条件" : "の買取条件"}｜査定料・出張料・送料・入金・ジャンク対応【公式確認】`,
     description: c.page_description ? c.page_description : fitDesc(
       isPlatform
         ? `${c.name}（運営: ${c.operator.name}）の仕組み・対象・利用料・流れを公式サイトで一次確認しています（${formatChecked(c.confirmed_date)}確認）。`
@@ -110,8 +110,8 @@ export default async function KaitoriPage({
       ];
 
   const h1 = c.page_h1 ? c.page_h1 : isPlatform
-    ? `${c.name}の仕組みと利用条件｜利用料・流れ・運営会社【2026年9月公式確認】`
-    : `${c.name}${c.name.endsWith("買取") ? "の利用条件" : "の買取条件"}｜査定料・出張料・送料・入金・ジャンク対応【2026年9月公式確認】`;
+    ? `${c.name}の仕組みと利用条件｜利用料・流れ・運営会社【公式確認】`
+    : `${c.name}${c.name.endsWith("買取") ? "の利用条件" : "の買取条件"}｜査定料・出張料・送料・入金・ジャンク対応【公式確認】`;
 
   return (
     <>
