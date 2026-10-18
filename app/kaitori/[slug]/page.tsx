@@ -254,14 +254,21 @@ export default async function KaitoriPage({
                 <tr>
                   <th>確認元</th>
                   <td>
-                    <a
-                      href={c.operator.source}
-                      rel="nofollow noopener"
-                      target="_blank"
-                      className="text-vermilion underline underline-offset-4 hover:text-vermilion-deep"
-                    >
-                      {c.operator.source}
-                    </a>
+                    {c.operator.source.split(/(https?:\/\/[^\s（）]+)/).map((part, i) =>
+                      /^https?:\/\//.test(part) ? (
+                        <a
+                          key={i}
+                          href={part}
+                          rel="nofollow noopener"
+                          target="_blank"
+                          className="text-vermilion underline underline-offset-4 hover:text-vermilion-deep"
+                        >
+                          {part}
+                        </a>
+                      ) : (
+                        part
+                      ),
+                    )}
                   </td>
                 </tr>
               </tbody>
