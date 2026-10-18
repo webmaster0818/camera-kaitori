@@ -4,12 +4,13 @@ import CategoryHub from "@/components/CategoryHub";
 import JsonLd from "@/components/JsonLd";
 import { fmt, formatChecked, getCategory, getCompany } from "@/lib/companies";
 import { SITE_NAME, SITE_URL, OPERATOR } from "@/lib/site";
+import { MIRRORLESS_LISTED } from "@/lib/mirrorless";
 
-const TITLE = "デジタルカメラ（デジカメ）買取｜売る前のチェック10項目・相場の調べ方・宅配買取の条件比較【2026年10月更新】";
+const TITLE = "ミラーレス買取・デジタルカメラ買取｜掲載10社の対応・付属品で変わる条件・メーカー別の確認点【2026年10月更新】";
 const DESC =
-  "デジタルカメラ（デジカメ）を買取に出す前のチェック10項目、相場の調べ方、メーカー別・状態別の案内、宅配買取各社の査定料・送料・返送料・入金の条件を、公式サイトの記載にもとづいて整理しています（2026年10月14日更新）。";
+  "ミラーレスカメラ・デジタルカメラの買取先を、掲載10社の公式記載で比較。ミラーレスを対象品目に明記する社、バッテリー・充電器なしは買取不可などの付属品条件、製造番号ラベルの扱い、メーカー別の確認点、相場の調べ方、返送料・入金を整理（2026年10月18日更新）。";
 const PATH = "/digital/";
-const PAGE_UPDATED = "2026-10-14";
+const PAGE_UPDATED = "2026-10-18";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -40,6 +41,27 @@ const CHECKLIST = [
   "センサーのゴミ、レンズのカビ・くもりを光で確認し、気になる点を写真に撮った",
   "外観の傷・スレ・ゴムの剥がれを写真に残した",
   "申込先の査定料・送料・キャンセル時の返送料・入金のタイミングを確認した",
+];
+
+/** 付属品・状態で受付や査定が変わる点（各社公式記載の要約。確認日は companies.json の confirmed_date） */
+const CONDITION_ROWS: { slug: string; point: string; text: string }[] = [
+  { slug: "arrows", point: "付属品", text: "「重度の付属品欠品（バッテリー、充電器がない商品）」は買取不可。箱なしは可。ジャンク品・加工品も買取不可" },
+  { slug: "naniwa", point: "付属品・状態", text: "「状態が悪いものや欠品しているものに関しては買取の対象となりにくい場合がございます」" },
+  { slug: "camera-takakuureru", point: "付属品・故障", text: "「購入時の箱や付属品は残っていることが望ましいですが、なくてもお買取できます」。「一部機能が使えないといった軽度の故障でしたら、買取価格がつく可能性があります」" },
+  { slug: "uriel", point: "付属品・カビ", text: "付属品がないカメラも可。「カビ・ホコリ・曇り」がある品も査定対象と記載" },
+  { slug: "janpara", point: "動作", text: "「基本的に通常正常動作品のみ買取対象となります」（店頭はバルク品や欠品のあるものも可と記載）" },
+  { slug: "camera-kaitoriyasan", point: "故障", text: "「壊れていても買取OK」「他店で断られてしまった壊れているカメラであっても、査定いたします」" },
+  { slug: "kitamura", point: "製造番号", text: "製造番号（シリアルナンバー）が「消えてしまった、または、判別できないという場合は買い取ることが出来かねます」" },
+  { slug: "daikokuya", point: "製造番号・単体", text: "製造番号が消えている・判別できないカメラは買取不可。「ボディ単体・レンズ単体でもお買取りしております」" },
+];
+
+/** ミラーレスの主なメーカーとマウント（一般的な名称。詳細はサイト内の各ページ） */
+const MAKER_MOUNTS: { maker: string; mount: string; href: string; label: string }[] = [
+  { maker: "キヤノン", mount: "RFマウント（EOS R系）・EF-Mマウント（EOS M系）", href: "/maker/canon/", label: "キヤノンのカメラ買取" },
+  { maker: "ニコン", mount: "Zマウント（Z系）", href: "/maker/nikon/", label: "ニコンのカメラ買取" },
+  { maker: "ソニー", mount: "Eマウント（α・NEX系）", href: "/maker/sony/", label: "ソニーのカメラ買取" },
+  { maker: "富士フイルム", mount: "Xマウント（X系）・Gマウント（GFX系）", href: "/maker/fujifilm/", label: "富士フイルムのカメラ買取" },
+  { maker: "OM SYSTEM・オリンパス・パナソニック", mount: "マイクロフォーサーズ（OM-D・PEN・LUMIX G系など）", href: "/mount/micro-four-thirds/", label: "マイクロフォーサーズのレンズ買取" },
 ];
 
 /** 機種・メーカー・状態別の導線（サイト内の既存ページのみ） */
@@ -84,6 +106,7 @@ const ROUTES: { h: string; links: { href: string; label: string }[] }[] = [
 ];
 
 export default function DigitalPage() {
+  const mlYes = MIRRORLESS_LISTED.filter((m) => m.mirrorless === "あり");
   const cat = getCategory("digital");
   const oikura = getCompany("oikura");
   const rows = cat.companySlugs.map((slug) => getCompany(slug));
@@ -93,7 +116,7 @@ export default function DigitalPage() {
     <CategoryHub
       cat={cat}
       kicker="DIGITAL CAMERA"
-      h1="デジタルカメラ（デジカメ）買取｜売る前の確認事項・相場の調べ方・業者の条件比較"
+      h1="ミラーレス買取・デジタルカメラ（デジカメ）買取｜掲載社の対応・付属品の条件・相場の調べ方"
       updated={PAGE_UPDATED}
       intro="デジタル一眼レフ・ミラーレスカメラは、新機種の登場により相場が変動しやすいカテゴリです。売却を決めた場合は、付属品を揃え、メモリーカードを抜いてデータを消去し、状態を正確に申告したうえで、送料・返送料・入金の条件を比較するのが基本的な流れです。本ページでは、デジタルカメラの売却前に確認しておくべき一般的な判断材料と、掲載サービスについて公式サイトで確認した条件をまとめています。買取価格は日々変動するため、当サイトでは金額を掲載しておりません。"
       points={[
@@ -154,6 +177,14 @@ export default function DigitalPage() {
       ]}
       faqs={[
         {
+          q: "ミラーレスカメラはどこで買取してもらえますか？",
+          a: `当サイト掲載の買取${MIRRORLESS_LISTED.length}社のうち、${mlYes.map((m) => m.name).join("・")}の${mlYes.length}社が、公式サイトの対象品目に「ミラーレス」を明記しています（2026年9月確認）。宅配・店頭・出張のどれを選べるかは社ごとに異なるため、本ページの「ミラーレス買取：掲載${MIRRORLESS_LISTED.length}社の対応と買取方法」の表で確認してください。`,
+        },
+        {
+          q: "製造番号のシールがはがれたミラーレスカメラは売れますか？",
+          a: "買取を断られる場合があります。カメラのキタムラと大黒屋は、製造番号（シリアルナンバー）が消えてしまった・判別できないカメラは買い取れないと公式サイトに記載しています（2026年9月11日確認）。他の掲載社は記載を確認できていないため、申込前に問い合わせてください。",
+        },
+        {
           q: "バッテリーや充電器がなくても売れますか？",
           a: "業者によって異なります。カメラ買取アローズは「重度付属品欠品（バッテリー、充電器がない商品）」を買取不可と公式サイトに明記しています（2026年9月5日確認）。他の掲載サービスについては個別の記載を確認できなかったため、申込前に各社へ確認してください。",
         },
@@ -188,12 +219,143 @@ export default function DigitalPage() {
       <div className="mt-6 max-w-3xl border-l-4 border-vermilion bg-chalk-card px-5 py-4">
         <p className="kicker mb-2">要点</p>
         <p className="text-sm leading-loose text-steel-800">
+          ミラーレスカメラの買取は、当サイト掲載の買取{MIRRORLESS_LISTED.length}社のうち{mlYes.length}社（{mlYes.map((m) => m.name).join("・")}）が、公式サイトの対象品目に「ミラーレス」を明記しています。残る{MIRRORLESS_LISTED.length - mlYes.length}社も「デジタルカメラ」「ボディ」などの表記で受け付けており、ミラーレスを受け付けないという記載ではありません（各社公式・2026年9月確認）。
+        </p>
+        <p className="mt-2 text-sm leading-loose text-steel-800">
           デジタルカメラ（デジタル一眼レフ・ミラーレスカメラ・コンパクトデジタルカメラ）は、型落ちや古い機種でも買取の対象となる場合があります。買取額は型番・状態・付属品・売却の時期によって決まるため、当サイトでは金額を掲載せず、相場の調べ方と業者ごとの条件を整理しています。
         </p>
         <p className="mt-2 text-sm leading-loose text-steel-800">
           売却前に、型番と付属品（特にバッテリー・充電器）を揃える、メモリーカードを抜いて本体を初期化する、傷・カビ・動作を把握して申告する、の3点を済ませたうえで、査定料・送料・キャンセル時の返送料・入金のタイミングを2〜3社で比較するのが基本です。
         </p>
       </div>
+
+
+      <section className="mt-12">
+        <h2 className="section-title mb-2">ミラーレス買取：掲載{MIRRORLESS_LISTED.length}社の対応と買取方法（公式記載）</h2>
+        <p className="mb-5 max-w-3xl text-sm leading-loose text-steel-600">
+          自社でカメラを買い取る掲載{MIRRORLESS_LISTED.length}社について、公式サイトの対象品目に「ミラーレス」の記載があるかと、選べる買取方法をまとめました。「公式では確認できず」は記載が見つからなかったという意味で、受け付けないという意味ではありません。各社の付属品・故障・製造番号の記載まで含めた全文は
+          <Link href="/digital/mirrorless/" className="text-vermilion underline underline-offset-4">ミラーレスカメラ買取前の確認事項</Link>
+          にあります。
+        </p>
+        <div className="overflow-x-auto border border-chalk-line">
+          <table className="spec-table">
+            <thead>
+              <tr>
+                <th className="w-32 md:w-44">業者</th>
+                <th>ミラーレスの記載</th>
+                <th>買取方法</th>
+              </tr>
+            </thead>
+            <tbody>
+              {MIRRORLESS_LISTED.map((m) => (
+                <tr key={m.slug}>
+                  <th>
+                    <Link href={`/kaitori/${m.slug}/`} className="underline underline-offset-4 hover:text-vermilion">
+                      {m.name}
+                    </Link>
+                    <span className="mt-1 block text-[11px] font-normal text-steel-500">{m.checked}確認</span>
+                  </th>
+                  <td className="text-[13px]">{m.mirrorless}</td>
+                  <td className="text-[13px]">{m.methods}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-2 text-xs text-steel-500">※ 横にスクロールできます。機種別・メーカー別の受付可否は、どの社の公式記載にもないため、当サイトからは断定できません。買取金額は掲載していません。</p>
+      </section>
+
+      <section className="mt-12">
+        <h2 className="section-title mb-2">付属品・状態で受付や査定が変わる点（各社の公式記載）</h2>
+        <p className="mb-5 max-w-3xl text-sm leading-loose text-steel-600">
+          ミラーレスカメラ・デジタルカメラでは、バッテリーや充電器の欠品、動作、製造番号の判読で、受付の可否が分かれます。掲載社の公式サイトに明記されている条件だけを抜き出しました。
+        </p>
+        <div className="overflow-x-auto border border-chalk-line">
+          <table className="spec-table">
+            <thead>
+              <tr>
+                <th className="w-32 md:w-44">業者</th>
+                <th className="w-24">項目</th>
+                <th>公式の記載（要約・引用）</th>
+              </tr>
+            </thead>
+            <tbody>
+              {CONDITION_ROWS.map((r) => {
+                const c = getCompany(r.slug);
+                return (
+                  <tr key={r.slug}>
+                    <th>
+                      <Link href={`/kaitori/${c.slug}/`} className="underline underline-offset-4 hover:text-vermilion">
+                        {c.name}
+                      </Link>
+                      <span className="mt-1 block text-[11px] font-normal text-steel-500">{formatChecked(c.confirmed_date)}確認</span>
+                    </th>
+                    <td className="text-[13px]">{r.point}</td>
+                    <td className="text-[13px]">{r.text}</td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section className="mt-12">
+        <h2 className="section-title mb-5">ミラーレスカメラを高く売るために押さえる条件（出典つき）</h2>
+        <ol className="space-y-3 text-[13px] leading-loose text-steel-700">
+          <li className="border border-chalk-line bg-chalk-card px-4 py-3">
+            <strong className="text-steel-900">1. バッテリーと充電器（またはUSBケーブル）をそろえる。</strong>
+            カメラ買取アローズはバッテリー・充電器のない商品を買取不可、カメラのナニワは欠品のあるものは「買取の対象となりにくい」と記載しています（上表）。元箱については、カメラ買取アローズが「箱なし」可、カメラ高く売れるドットコムが「なくてもお買取できます」と記載しており、そろえる優先順位は充電まわりが先です。
+          </li>
+          <li className="border border-chalk-line bg-chalk-card px-4 py-3">
+            <strong className="text-steel-900">2. 製造番号のラベルをはがさない・消さない。</strong>
+            カメラのキタムラと大黒屋は、製造番号が消えた・判別できないカメラを買い取れないと記載しています。底面のラベルは、型番の確認用に写真に撮っておきます。
+          </li>
+          <li className="border border-chalk-line bg-chalk-card px-4 py-3">
+            <strong className="text-steel-900">3. 動作品か故障品かで申込先を分ける。</strong>
+            じゃんぱらは「基本的に通常正常動作品のみ」、カメラ買取アローズはジャンク品を買取不可とする一方、カメラの買取屋さんは「壊れていても買取OK」、カメラ高く売れるドットコムは軽度の故障なら「買取価格がつく可能性があります」としています。故障品は
+            <Link href="/broken/" className="text-vermilion underline underline-offset-4">壊れたカメラの売却</Link>
+            を参照してください。
+          </li>
+          <li className="border border-chalk-line bg-chalk-card px-4 py-3">
+            <strong className="text-steel-900">4. 相場は型番と状態が近い実績で確かめ、同じ情報で2〜3社に聞く。</strong>
+            調べ方は下の「デジタルカメラの買取相場の調べ方」で、一括査定の仕組みは
+            <Link href="/kaitori/oikura/" className="text-vermilion underline underline-offset-4">おいくら</Link>・
+            <Link href="/kaitori/minna-no-kaitori/" className="text-vermilion underline underline-offset-4">みんなの買取</Link>
+            のページで整理しています。
+          </li>
+        </ol>
+        <p className="mt-3 text-xs text-steel-500">※ 各社の記載は確認日時点のものです（上表の確認日を参照）。当サイトは金額の目安を掲載していません。</p>
+      </section>
+
+      <section className="mt-12">
+        <h2 className="section-title mb-2">メーカー別：ミラーレスのマウントと確認ページ</h2>
+        <p className="mb-5 max-w-3xl text-sm leading-loose text-steel-600">
+          ミラーレスカメラはメーカーごとにマウントが分かれ、同じメーカーでも複数のマウントがあります。型番とあわせてマウント名を伝えると、レンズを一緒に出すときに組み合わせを説明しやすくなります。
+        </p>
+        <div className="overflow-x-auto border border-chalk-line">
+          <table className="spec-table">
+            <thead>
+              <tr>
+                <th className="w-40">メーカー</th>
+                <th>主なミラーレス用マウント</th>
+                <th className="w-48">詳しいページ</th>
+              </tr>
+            </thead>
+            <tbody>
+              {MAKER_MOUNTS.map((m) => (
+                <tr key={m.href}>
+                  <th>{m.maker}</th>
+                  <td className="text-[13px]">{m.mount}</td>
+                  <td className="text-[13px]">
+                    <Link href={m.href} className="text-vermilion underline underline-offset-4">{m.label}</Link>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
 
       <section className="mt-12">
         <h2 className="section-title mb-5">デジタルカメラを売る前のチェック10項目</h2>

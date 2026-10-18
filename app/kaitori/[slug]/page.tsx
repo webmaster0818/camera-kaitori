@@ -177,6 +177,38 @@ export default async function KaitoriPage({
           </div>
         </section>
 
+        {(c.extra_sections ?? []).map((sec) => (
+          <section key={sec.title} className="mt-14">
+            <h2 className="section-title mb-3">{sec.title}</h2>
+            {sec.intro && <p className="mb-5 max-w-3xl text-sm leading-loose text-steel-600">{sec.intro}</p>}
+            {sec.steps ? (
+              <ol className="space-y-3">
+                {sec.items.map((it, i) => (
+                  <li key={it.t} className="flex gap-4 border border-chalk-line bg-chalk-card p-5">
+                    <span aria-hidden="true" className="font-display text-sm tracking-widest2 text-vermilion">
+                      {`STEP ${i + 1}`}
+                    </span>
+                    <div>
+                      <h3 className="font-display text-base text-steel-900">{it.t}</h3>
+                      <p className="mt-2 text-[13px] leading-loose text-steel-700">{it.d}</p>
+                    </div>
+                  </li>
+                ))}
+              </ol>
+            ) : (
+              <div className="grid gap-5 md:grid-cols-2">
+                {sec.items.map((it) => (
+                  <div key={it.t} className="border border-chalk-line bg-chalk-card p-5">
+                    <h3 className="font-display text-base text-steel-900">{it.t}</h3>
+                    <p className="mt-3 text-[13px] leading-loose text-steel-700">{it.d}</p>
+                  </div>
+                ))}
+              </div>
+            )}
+            {sec.source && <p className="mt-3 text-xs leading-relaxed text-steel-500">出典: {sec.source}</p>}
+          </section>
+        ))}
+
         {c.camera_points && c.camera_points.length > 0 && (
           <section className="mt-14">
             <h2 className="section-title mb-5">
@@ -251,6 +283,12 @@ export default async function KaitoriPage({
                   <th>古物商許可</th>
                   <td>{fmt(c.operator.kobutsu)}</td>
                 </tr>
+                {(c.operator.extra ?? []).map((r) => (
+                  <tr key={r.label}>
+                    <th>{r.label}</th>
+                    <td>{r.value}</td>
+                  </tr>
+                ))}
                 <tr>
                   <th>確認元</th>
                   <td>

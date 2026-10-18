@@ -5,6 +5,8 @@ export interface Operator {
   address: string;
   kobutsu: string | null;
   source: string;
+  /** 運営会社表に足す行（設立・代表者など。公式の会社概要で確認できたものだけ） */
+  extra?: { label: string; value: string }[] | null;
 }
 
 /** 費用まわり（宅配・出張買取の実務項目） */
@@ -50,6 +52,8 @@ export interface Company {
   /** カメラ・レンズを出すときの使い方（見出し＋本文） */
   camera_points_title?: string | null;
   camera_points?: { t: string; d: string }[] | null;
+  /** 業者ページに足す個別セクション（主要な取引条件の直後に表示）。steps=true なら番号付きの手順として表示 */
+  extra_sections?: { title: string; intro?: string; steps?: boolean; items: { t: string; d: string }[]; source?: string }[] | null;
   /** 共通FAQの前に足す個別FAQ */
   extra_faqs?: { q: string; a: string }[] | null;
 }
