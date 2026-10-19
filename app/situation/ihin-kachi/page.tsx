@@ -330,7 +330,7 @@ export default function IhinKachiPage() {
             <ul className="mt-3 space-y-2 text-[13px] leading-loose text-steel-700">
               <li>
                 <Link href="/kaitori/kitamura/" className="underline hover:text-vermilion">カメラのキタムラ</Link>
-                ：「元々製造番号（シリアルナンバー）があるのに消えてしまった、または、判別できないという場合は買い取ることが出来かねます」（2026年9月11日確認）
+                ：「元々製造番号（シリアルナンバー）があるのに消えてしまった、または、判別できないという場合は買い取ることが出来かねます」（2026年10月19日確認）
               </li>
               <li>
                 <Link href="/kaitori/daikokuya/" className="underline hover:text-vermilion">大黒屋</Link>
@@ -531,9 +531,9 @@ export default function IhinKachiPage() {
                 <Link href="/kaitori/hikakaku/" className="underline hover:text-vermilion">ヒカカク！</Link>
                 が「最大20社一括査定見積もり」、
                 <Link href="/kaitori/minna-no-kaitori/" className="underline hover:text-vermilion">みんなの買取</Link>
-                が「最大10社に同時査定依頼が可能」、
+                が「最大10社の中から一番いい業者を選ぶだけ」（2026年10月19日確認）、
                 <Link href="/kaitori/oikura/" className="underline hover:text-vermilion">おいくら</Link>
-                が複数の買取店から見積結果がメールで届く仕組みと記載しています（いずれも2026年9月5日確認）。これらのサービス自体はカメラを買い取らず、実際の条件は紹介先の業者ごとに異なります。
+                が複数の買取店から見積結果がメールで届く仕組みと記載しています（ヒカカク！・おいくらは2026年9月5日確認）。これらのサービス自体はカメラを買い取らず、実際の条件は紹介先の業者ごとに異なります。
               </li>
             </ul>
             <p className="mt-3 text-xs text-steel-500">
