@@ -53,7 +53,7 @@ const howToSell: { method: string; fit: string; slugs: string[]; caution: ReactN
     method: "店頭買取",
     fit: "近くに店舗がある・その場で現金化したい・点数が少ない",
     slugs: ["kitamura", "naniwa", "fujiya", "daikokuya", "janpara", "camera-kaitoriyasan", "camera-takakuureru", "rakuuru"],
-    caution: "ラクウル（ソフマップ）は来店予約制です（池袋店・AKIBA駅前館）。店舗によって取り扱いのない品目もあるため、持ち込む前に各社ページでご確認ください。",
+    caution: "ラクウル（ソフマップ）は来店予約制です（ビックカメラグループ各店で預ける方式）。店舗によって取り扱いのない品目もあるため、持ち込む前に各社ページでご確認ください。",
   },
   {
     method: "宅配買取",

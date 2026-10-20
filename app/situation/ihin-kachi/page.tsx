@@ -334,7 +334,7 @@ export default function IhinKachiPage() {
               </li>
               <li>
                 <Link href="/kaitori/daikokuya/" className="underline hover:text-vermilion">大黒屋</Link>
-                ：「製造番号やシリアルナンバーが元々入っているカメラで、消えてしまっていたり、判別できない状態のものはお買取りができません」（2026年9月11日確認）
+                ：「製造番号やシリアルナンバーが元々入っているカメラで、消えてしまっていたり、判別できない状態のものはお買取りができません」（2026年10月20日確認）
               </li>
             </ul>
             <p className="mt-3 text-xs text-steel-500">
@@ -370,15 +370,15 @@ export default function IhinKachiPage() {
             <ul className="mt-3 space-y-2 text-[13px] leading-loose text-steel-700">
               <li>
                 <Link href="/kaitori/camera-takakuureru/" className="underline hover:text-vermilion">カメラ高く売れるドットコム</Link>
-                ：「購入時の箱や付属品は残っていることが望ましいですが、なくてもお買取できます」（2026年9月11日確認）
+                ：「購入時の箱や付属品は残っていることが望ましいですが、なくてもお買取できます」（2026年10月20日確認）
               </li>
               <li>
                 <Link href="/kaitori/uriel/" className="underline hover:text-vermilion">ウリエル</Link>
-                ：付属品がないカメラも可と記載（2026年9月5日確認）
+                ：「このようなカメラもご相談ください！」として「付属品がないカメラ」を掲載（2026年10月20日確認）
               </li>
               <li>
                 <Link href="/kaitori/arrows/" className="underline hover:text-vermilion">カメラ買取アローズ</Link>
-                ：箱なしは可。ジャンク品・加工品・重度の付属品欠品（バッテリー・充電器がない商品）は買取不可と明記（2026年9月5日確認）
+                ：箱なしは可。ジャンク品・加工品・重度の付属品欠品（バッテリー・充電器がない商品）は買取不可と明記（2026年10月20日確認）
               </li>
             </ul>
             <p className="mt-3 text-xs text-steel-500">
@@ -516,24 +516,24 @@ export default function IhinKachiPage() {
             <ul className="mt-3 space-y-2 text-[13px] leading-loose text-steel-700">
               <li>
                 <Link href="/kaitori/naniwa/" className="underline hover:text-vermilion">カメラのナニワ</Link>
-                ：LINE査定・オンライン査定のメニューがあり、遺品買取の専用メニューもあると記載（「遺品となってしまったカメラやレンズの買取もお任せください。もちろん、カメラ以外の備品もお引き取りいたします」）（2026年9月11日確認）
+                ：WEB査定のメニューと、遺品買取の専用メニューがあると記載（「遺品となってしまったカメラやレンズの買取もお任せください。もちろん、カメラ以外の備品もお引き取りいたします」）。LINE買取は2025年3月31日から一時休止と公式に掲載（2026年10月20日確認）
               </li>
               <li>
                 <Link href="/kaitori/daikokuya/" className="underline hover:text-vermilion">大黒屋</Link>
-                ：LINE査定・メール査定のメニューがあると記載（2026年9月11日確認）
+                ：LINE査定・メール査定のメニューがあると記載（2026年10月20日確認）
               </li>
               <li>
                 <Link href="/kaitori/uriel/" className="underline hover:text-vermilion">ウリエル</Link>
-                ：遺品整理×買取の専用ページがあり、「遺品整理」と「遺品買取」を同時に行う旨を記載（2026年9月5日確認）
+                ：遺品整理×買取の専用ページがあり、「遺品整理」と「遺品買取」を同時に行う旨を記載（2026年10月20日確認）
               </li>
               <li>
                 一括査定のサービスでは、
                 <Link href="/kaitori/hikakaku/" className="underline hover:text-vermilion">ヒカカク！</Link>
-                が「最大20社一括査定見積もり」、
+                が「最大20社から一括査定」、
                 <Link href="/kaitori/minna-no-kaitori/" className="underline hover:text-vermilion">みんなの買取</Link>
                 が「最大10社の中から一番いい業者を選ぶだけ」（2026年10月19日確認）、
                 <Link href="/kaitori/oikura/" className="underline hover:text-vermilion">おいくら</Link>
-                が複数の買取店から見積結果がメールで届く仕組みと記載しています（ヒカカク！・おいくらは2026年9月5日確認）。これらのサービス自体はカメラを買い取らず、実際の条件は紹介先の業者ごとに異なります。
+                が複数の買取店から見積結果がメールで届く仕組みと記載しています（ヒカカク！・おいくらは2026年10月20日確認）。これらのサービス自体はカメラを買い取らず、実際の条件は紹介先の業者ごとに異なります。
               </li>
             </ul>
             <p className="mt-3 text-xs text-steel-500">
