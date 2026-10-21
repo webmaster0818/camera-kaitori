@@ -45,7 +45,7 @@ const CHECKLIST = [
 
 /** 付属品・状態で受付や査定が変わる点（各社公式記載の要約。確認日は companies.json の confirmed_date） */
 const CONDITION_ROWS: { slug: string; point: string; text: string }[] = [
-  { slug: "arrows", point: "付属品", text: "「重度の付属品欠品（バッテリー、充電器がない商品）」は買取不可。箱なしは可。ジャンク品・加工品も買取不可" },
+  { slug: "arrows", point: "付属品", text: "「重度の付属品欠品（バッテリー、充電器がない商品）」は買取不可。箱なしは可。ジャンク品・加工品も買取不可（ジャンク品は一部買い取るケースがあると買取基準に記載）" },
   { slug: "naniwa", point: "付属品・状態", text: "「状態が悪いものや欠品しているものに関しては買取の対象となりにくい場合がございます」" },
   { slug: "camera-takakuureru", point: "付属品・故障", text: "「購入時の箱や付属品は残っていることが望ましいですが、なくてもお買取できます」。「一部機能が使えないといった軽度の故障でしたら、買取価格がつく可能性があります」" },
   { slug: "uriel", point: "付属品・カビ", text: "「付属品がないカメラ」を「ご相談ください」の対象として掲載。メーカー別ページで「カビ・ホコリ・曇りの有無」を査定ポイントとして記載" },
@@ -152,7 +152,7 @@ export default function DigitalPage() {
       cautions={[
         {
           t: "査定後のキャンセルと返送料",
-          d: "宅配買取では、査定額に納得できなかった場合のキャンセル可否と返送料の負担が業者によって異なります。カメラ買取アローズは査定額報告後48時間以内のキャンセル無料・返送料は利用者負担、カメラの買取屋さんは「キャンセル料や手数料は一切かかりません」と記載する一方、宅配買取の流れでは返送費用を「お客様負担」としています（2026年10月20日確認）。",
+          d: "宅配買取では、査定額に納得できなかった場合のキャンセル可否と返送料の負担が業者によって異なります。カメラ買取アローズは査定額報告後48時間以内のキャンセル無料・返送料は利用者負担、カメラの買取屋さんは宅配買取の送料・手数料を無料（着払い）とする一方、査定額に納得できず返送する場合の返送費用は「お客様負担」と注記しています（2026年10月21日確認）。",
         },
         {
           t: "レンズキットの扱い",
@@ -301,7 +301,7 @@ export default function DigitalPage() {
       </section>
 
       <section className="mt-12">
-        <h2 className="section-title mb-5">ミラーレスカメラを高く売るために押さえる条件（出典つき）</h2>
+        <h2 className="section-title mb-5">ミラーレスカメラを高く売るために押さえる条件と各社の公式記載</h2>
         <ol className="space-y-3 text-[13px] leading-loose text-steel-700">
           <li className="border border-chalk-line bg-chalk-card px-4 py-3">
             <strong className="text-steel-900">1. バッテリーと充電器（またはUSBケーブル）をそろえる。</strong>
@@ -313,7 +313,7 @@ export default function DigitalPage() {
           </li>
           <li className="border border-chalk-line bg-chalk-card px-4 py-3">
             <strong className="text-steel-900">3. 動作品か故障品かで申込先を分ける。</strong>
-            じゃんぱらは「基本的に通常正常動作品のみ」、カメラ買取アローズはジャンク品を買取不可とする一方、カメラの買取屋さんは「壊れていても買取OK」、カメラ高く売れるドットコムは軽度の故障なら「買取価格がつく可能性があります」としています。故障品は
+            じゃんぱらは「基本的に通常正常動作品のみ」、カメラ買取アローズはジャンク品を原則買取不可とする一方、カメラの買取屋さんは「壊れていても買取OK」、カメラ高く売れるドットコムは軽度の故障なら「買取価格がつく可能性があります」としています。故障品は
             <Link href="/broken/" className="text-vermilion underline underline-offset-4">壊れたカメラの売却</Link>
             を参照してください。
           </li>
