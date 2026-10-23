@@ -71,7 +71,7 @@ export const MIRRORLESS_LISTED: MirrorlessListed[] = [
     mirrorless: "あり",
     methods: "宅配買取・店頭買取・出張買取",
     note: "「ボディ単体・レンズ単体でもお買取りしております」。ただし「製造番号やシリアルナンバーが元々入っているカメラで、消えてしまっていたり、判別できない状態のものはお買取りができません」",
-    checked: "2026年10月20日",
+    checked: "2026年10月23日",
   },
   {
     slug: "janpara",
@@ -80,7 +80,7 @@ export const MIRRORLESS_LISTED: MirrorlessListed[] = [
     mirrorless: "公式では確認できず（品目は「デジタル一眼」の表記）",
     methods: "店頭買取・おまかせ宅配買取・法人買取（出張買取の記載なし）",
     note: "「基本的に通常正常動作品のみ買取対象となります」",
-    checked: "2026年10月20日",
+    checked: "2026年10月23日",
   },
   {
     slug: "rakuuru",
