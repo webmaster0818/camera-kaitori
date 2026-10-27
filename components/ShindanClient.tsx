@@ -57,8 +57,13 @@ const allKaitori: ResultCompany[] = [
   { name: "アローズ", slug: "arrows" },
 ];
 
+/** 宅配買取に対応する社だけ（ウリエルは公式のご利用ガイドに「現在は出張買取のみの対応になります。」と記載・2026年10月27日確認） */
+const takuhaiKaitori: ResultCompany[] = allKaitori.filter((c) => c.slug !== "uriel");
+
 /** 判定ロジック（全開示・このままの順で評価） */
 function judge(q1: Q1, q2: Q2, q3: Q3, q4: Q4): Result {
+  // Q4 で宅配を選んだ場合は、宅配買取に対応する社だけを表示する
+  const list = q4 === "takuhai" ? takuhaiKaitori : allKaitori;
   if (q3 === "ihin") {
     return {
       rule: "ルール1",
@@ -66,7 +71,7 @@ function judge(q1: Q1, q2: Q2, q3: Q3, q4: Q4): Result {
       reason:
         "遺品・実家整理で出てきたカメラは、相続人の合意やフィルム・メモリーカードの扱いなど、売却前に整理すべき事項があります。運び出せない量の場合は、出張買取という選択肢もあります。各社の出張対応エリアと出張料は、一次確認情報のページでご確認ください。",
       hub: hubOf[q1],
-      companies: allKaitori,
+      companies: list,
       guide: { path: "/situation/ihin/", label: "遺品・実家整理で出てきたカメラの売却" },
     };
   }
@@ -77,7 +82,7 @@ function judge(q1: Q1, q2: Q2, q3: Q3, q4: Q4): Result {
       reason:
         "点数が多い場合は、メーカー・型番・状態を一覧にしてからご相談いただくと、査定内訳を確認しやすくなります。出張と宅配のどちらが適しているかは、重量と点数でご判断ください。",
       hub: hubOf[q1],
-      companies: allKaitori,
+      companies: list,
       guide: { path: "/situation/tairyou/", label: "カメラ・レンズを大量に売る場合の進め方" },
     };
   }
@@ -88,7 +93,7 @@ function judge(q1: Q1, q2: Q2, q3: Q3, q4: Q4): Result {
       reason:
         "壊れている・カビやくもりがある・動作未確認のカメラやレンズも、業者によっては査定対象になります。状態を正確に申告したうえで、ジャンク品の受付を公式サイトに明記している業者を、各社ページの「故障・ジャンク」欄でご確認ください。",
       hub: { path: "/broken/", label: "壊れた・ジャンク・カビありの買取ハブ" },
-      companies: allKaitori,
+      companies: list,
       guide: { path: "/guide/uru-mae/", label: "カメラ・レンズを売る前の準備" },
     };
   }
@@ -99,7 +104,7 @@ function judge(q1: Q1, q2: Q2, q3: Q3, q4: Q4): Result {
       reason:
         "種類がわからない・混在している場合は、フィルムかデジタルか、レンズのマウントは何かといった基本的な見分け方を確認すると、相談すべき窓口を判断できます。",
       hub: null,
-      companies: allKaitori,
+      companies: list,
       guide: { path: "/guide/kachi-mikata/", label: "フィルムカメラ・オールドレンズの価値の見分け方" },
     };
   }
@@ -110,7 +115,7 @@ function judge(q1: Q1, q2: Q2, q3: Q3, q4: Q4): Result {
       reason:
         "出張買取では、対応エリア・出張料・訪問購入としてのクーリングオフ制度の説明が確認事項となります。各社ページの「買取方法」「対応エリア」「出張料」欄と、トラブル対処ガイドをあわせてご確認ください。",
       hub: hubOf[q1],
-      companies: allKaitori,
+      companies: list,
       guide: { path: "/guide/erabikata/", label: "専門店・総合買取・出張買取・フリマの使い分け" },
     };
   }
@@ -121,7 +126,7 @@ function judge(q1: Q1, q2: Q2, q3: Q3, q4: Q4): Result {
       reason:
         "掲載サービスは宅配・出張買取が中心のため、店頭持ち込みの可否は、各社ページの「買取方法」欄の公式記載を必ずご確認ください。持ち込み先が近くにない場合は、宅配買取をご検討ください。",
       hub: hubOf[q1],
-      companies: allKaitori,
+      companies: list,
       guide: { path: "/compare/", label: "掲載サービスの統一比較表" },
     };
   }
@@ -131,7 +136,7 @@ function judge(q1: Q1, q2: Q2, q3: Q3, q4: Q4): Result {
     reason:
       "動作する機材を宅配で売却する、最も一般的なケースです。付属品を揃え、デジタル機はメモリーカードを抜いて初期化し、状態を正確に申告したうえで、送料・返送料・入金タイミングを各社ページで比較してください。",
     hub: hubOf[q1],
-    companies: allKaitori,
+    companies: list,
     guide: { path: "/guide/uru-mae/", label: "カメラ・レンズを売る前の準備" },
   };
 }

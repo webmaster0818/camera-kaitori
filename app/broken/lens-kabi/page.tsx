@@ -242,7 +242,7 @@ export default function LensKabiPage() {
     },
     {
       q: "カビのあるレンズを受け付けている業者はありますか？",
-      a: `掲載社では、大黒屋が「カビやくもりのあるオールドレンズもお買取りの対象です」（${formatChecked(daikokuya.confirmed_date)}確認）、カメラのキタムラが「このようなカメラも買取いたします」として「レンズにカビがあるカメラ」を掲載（2026年10月21日確認）、ウリエルがメーカー別ページで「カビ・ホコリ・曇りの有無」を査定ポイントの一つとして記載しています（${formatChecked(uriel.confirmed_date)}確認。ウリエルは出張買取・催事買取・店舗買取で、宅配買取は案内ページがなく申込方法を確認できず）。ウリエルは「状態によっては…お値段が付かないものもございます」とも記載しています。カメラの買取屋さんは「壊れていても買取OK」と記載していますが、カビ・くもりの個別の記載は確認できませんでした（${formatChecked(kaitoriyasan.confirmed_date)}確認）。条件は変わることがあるため、申込前に各社の公式サイトでご確認ください。`,
+      a: `掲載社では、大黒屋が「カビやくもりのあるオールドレンズもお買取りの対象です」（${formatChecked(daikokuya.confirmed_date)}確認）、カメラのキタムラが「このようなカメラも買取いたします」として「レンズにカビがあるカメラ」を掲載（2026年10月21日確認）、ウリエルがメーカー別ページで「カビ・ホコリ・曇りの有無」を査定ポイントの一つとして記載しています（${formatChecked(uriel.confirmed_date)}確認。ウリエルは出張買取・催事買取・店舗買取で、宅配買取は対応なし〈ご利用ガイドに「現在は出張買取のみの対応になります。」と記載〉）。ウリエルは「状態によっては…お値段が付かないものもございます」とも記載しています。カメラの買取屋さんは「壊れていても買取OK」と記載していますが、カビ・くもりの個別の記載は確認できませんでした（${formatChecked(kaitoriyasan.confirmed_date)}確認）。条件は変わることがあるため、申込前に各社の公式サイトでご確認ください。`,
     },
     {
       q: "ジャンク品は受け付けないと書かれている業者に送ってもよいですか？",
@@ -453,7 +453,7 @@ export default function LensKabiPage() {
             </table>
           </div>
           <p className="mt-3 max-w-3xl text-[13px] leading-loose text-steel-700">
-            カビ・くもりについて個別に記載しているのは、大黒屋（「カビやくもりのあるオールドレンズもお買取りの対象です」、{formatChecked(daikokuya.confirmed_date)}確認）、カメラのキタムラ（「このようなカメラも買取いたします」として「レンズにカビがあるカメラ」を掲載、2026年10月21日確認）とウリエル（メーカー別ページで「カビ・ホコリ・曇りの有無」を査定ポイントの一つとして記載、{formatChecked(uriel.confirmed_date)}確認）です。ウリエルは出張買取・催事買取・店舗買取で、よくある質問に宅配買取の文言はあるものの案内ページがなく、申込方法は確認できませんでした。カメラの買取屋さん（{formatChecked(kaitoriyasan.confirmed_date)}確認）とカメラ高く売れるドットコム（{formatChecked(takakuureru.confirmed_date)}確認）は壊れた品についての記載がありますが、カビ・くもりの個別記載は確認できませんでした。一方、カメラ買取アローズはジャンク品を原則買取不可とし（一部は事前の問い合わせで買い取るケースありと記載、{formatChecked(arrows.confirmed_date)}確認）、じゃんぱらは「基本的に通常正常動作品のみ買取対象」と記載しています（{formatChecked(janpara.confirmed_date)}確認）。
+            カビ・くもりについて個別に記載しているのは、大黒屋（「カビやくもりのあるオールドレンズもお買取りの対象です」、{formatChecked(daikokuya.confirmed_date)}確認）、カメラのキタムラ（「このようなカメラも買取いたします」として「レンズにカビがあるカメラ」を掲載、2026年10月21日確認）とウリエル（メーカー別ページで「カビ・ホコリ・曇りの有無」を査定ポイントの一つとして記載、{formatChecked(uriel.confirmed_date)}確認）です。ウリエルは出張買取・催事買取・店舗買取で、宅配買取には対応していません（公式のご利用ガイドに「現在は出張買取のみの対応になります。」と記載）。カメラの買取屋さん（{formatChecked(kaitoriyasan.confirmed_date)}確認）とカメラ高く売れるドットコム（{formatChecked(takakuureru.confirmed_date)}確認）は壊れた品についての記載がありますが、カビ・くもりの個別記載は確認できませんでした。一方、カメラ買取アローズはジャンク品を原則買取不可とし（一部は事前の問い合わせで買い取るケースありと記載、{formatChecked(arrows.confirmed_date)}確認）、じゃんぱらは「基本的に通常正常動作品のみ買取対象」と記載しています（{formatChecked(janpara.confirmed_date)}確認）。
           </p>
 
           <h3 className="mt-10 font-display text-base text-steel-900">宅配買取のキャンセル時の返送料（公式記載）</h3>
