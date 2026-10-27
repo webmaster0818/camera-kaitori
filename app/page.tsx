@@ -52,8 +52,8 @@ const howToSell: { method: string; fit: string; slugs: string[]; caution: ReactN
   {
     method: "店頭買取",
     fit: "近くに店舗がある・その場で現金化したい・点数が少ない",
-    slugs: ["kitamura", "naniwa", "fujiya", "daikokuya", "janpara", "camera-kaitoriyasan", "camera-takakuureru", "rakuuru"],
-    caution: "ラクウル（ソフマップ）は来店予約制です（ビックカメラグループ各店で預ける方式）。店舗によって取り扱いのない品目もあるため、持ち込む前に各社ページでご確認ください。",
+    slugs: ["kitamura", "naniwa", "fujiya", "daikokuya", "janpara", "camera-kaitoriyasan", "camera-takakuureru", "rakuuru", "uriel"],
+    caution: "ラクウル（ソフマップ）は来店予約制です（ビックカメラグループ各店で預ける方式）。ウリエルの店舗買取は川崎の1店舗で、事前の電話予約が必要です。店舗によって取り扱いのない品目もあるため、持ち込む前に各社ページでご確認ください。",
   },
   {
     method: "宅配買取",
@@ -118,7 +118,7 @@ export default function HomePage() {
         <div className="mx-auto max-w-site px-4 py-20 md:py-28">
           <p className="kicker mb-6 !text-vermilion">CAMERA &amp; LENS SELLING GUIDE</p>
           <h1 className="font-display text-3xl leading-relaxed md:text-5xl md:leading-relaxed">
-            公式情報にもとづく
+            カメラの売り方と
             <br />
             <span className="text-vermilion">中立</span>のカメラ・レンズ買取比較
           </h1>
@@ -181,7 +181,9 @@ export default function HomePage() {
         <p className="mt-3 max-w-3xl text-xs leading-relaxed text-steel-500">
           ※ 各社の「買取方法」欄（公式サイトの記載・{checkedLabelAll()}確認）から集計しています。ラクウル（ソフマップ）の出張買取は家電・家具3点以上が対象のため出張には含めていません。フジヤカメラの出張引取は法人・プロユース向けページの記載のため除外しています。フリマ・下取りとの使い分けは
           <Link href="/guide/erabikata/" className="text-vermilion underline underline-offset-4">専門店・総合買取・出張買取・フリマの使い分け</Link>
-          でご説明しています。
+          でご説明しています。オールドレンズをレンズ単体やカビ・くもりのある状態で売る場合の受付条件は
+          <Link href="/old-lens/" className="text-vermilion underline underline-offset-4">オールドレンズの買取</Link>
+          にまとめています。
         </p>
       </section>
 
