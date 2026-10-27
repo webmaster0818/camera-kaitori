@@ -472,7 +472,7 @@ export default function IhinShucchouPage() {
             ))}
           </div>
           <p className="mt-3 text-xs text-steel-500">
-            ※ {daikokuya.name}は、出張買取の流れとして「{fmt(daikokuya.cooling_off)}」と記載しています（{formatChecked(daikokuya.confirmed_date)}確認）。{uriel.name}は「依頼を受けていない突然の訪問や執拗な電話勧誘は行っていない」と公式に記載しています（{formatChecked(uriel.confirmed_date)}確認）。
+            ※ {daikokuya.name}は、出張買取の流れとして「{fmt(daikokuya.cooling_off)}」と記載しています（{formatChecked(daikokuya.confirmed_date)}確認）。{uriel.name}は「お客様への押し買いや突然の電話営業、訪問営業はいたしません」と公式に記載しています（{formatChecked(uriel.confirmed_date)}確認）。
           </p>
           <div className="mt-6 flex flex-col gap-3 sm:flex-row">
             <Link href="/situation/tairyou/" className="btn-primary">点数が多い場合の内訳の見方を見る</Link>
