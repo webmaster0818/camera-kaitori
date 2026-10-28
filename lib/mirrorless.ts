@@ -35,7 +35,7 @@ export const MIRRORLESS_LISTED: MirrorlessListed[] = [
     mirrorless: "あり",
     methods: "宅配買取（ヤマト運輸着払い・無料集荷あり）。100点以上の大口査定は出張買取",
     note: "故障品は「商品によっては買取が可能な場合もございます」。ジャンク品・加工品・重度の付属品欠品（バッテリー、充電器がない商品）は買取不可と明記。箱なしは可",
-    checked: "2026年10月20日",
+    checked: "2026年10月28日",
   },
   {
     slug: "kitamura",
