@@ -26,7 +26,7 @@ export const MIRRORLESS_LISTED: MirrorlessListed[] = [
     mirrorless: "対象品目は「ボディ」の表記（買取実績に「ミラーレス一眼」のカテゴリあり）",
     methods: "宅配買取・出張買取・店頭買取",
     note: "「壊れていても買取OK」「他店で断られてしまった壊れているカメラであっても、査定いたします」",
-    checked: "2026年10月20日",
+    checked: "2026年10月28日",
   },
   {
     slug: "arrows",
