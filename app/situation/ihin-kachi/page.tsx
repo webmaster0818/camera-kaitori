@@ -533,7 +533,7 @@ export default function IhinKachiPage() {
                 <Link href="/kaitori/minna-no-kaitori/" className="underline hover:text-vermilion">みんなの買取</Link>
                 が「最大10社の中から一番いい業者を選ぶだけ」（2026年10月19日確認）、
                 <Link href="/kaitori/oikura/" className="underline hover:text-vermilion">おいくら</Link>
-                が複数の買取店から見積結果がメールで届く仕組みと記載しています（ヒカカク！・おいくらは2026年10月20日確認）。これらのサービス自体はカメラを買い取らず、実際の条件は紹介先の業者ごとに異なります。
+                が複数の買取店から見積結果がメールで届く仕組みと記載しています（ヒカカク！・おいくらは2026年10月30日確認）。これらのサービス自体はカメラを買い取らず、実際の条件は紹介先の業者ごとに異なります。
               </li>
             </ul>
             <p className="mt-3 text-xs text-steel-500">
