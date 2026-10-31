@@ -179,7 +179,7 @@ export default function HomePage() {
           </table>
         </div>
         <p className="mt-3 max-w-3xl text-xs leading-relaxed text-steel-500">
-          ※ 各社の「買取方法」欄（公式サイトの記載・{checkedLabelAll()}確認）から集計しています。ラクウル（ソフマップ）の出張買取は家電・家具3点以上が対象のため出張には含めていません。フジヤカメラの出張引取は法人・プロユース向けページの記載のため除外しています。フリマ・下取りとの使い分けは
+          ※ 各社の「買取方法」欄（公式サイトの記載・{checkedLabelAll()}確認）から集計しています。ラクウル（ソフマップ）は出張買取ページの対象品目にカメラの記載がないため、出張には含めていません。フジヤカメラの出張引取は法人・プロユース向けページの記載のため除外しています。フリマ・下取りとの使い分けは
           <Link href="/guide/erabikata/" className="text-vermilion underline underline-offset-4">専門店・総合買取・出張買取・フリマの使い分け</Link>
           でご説明しています。オールドレンズをレンズ単体やカビ・くもりのある状態で売る場合の受付条件は
           <Link href="/old-lens/" className="text-vermilion underline underline-offset-4">オールドレンズの買取</Link>
