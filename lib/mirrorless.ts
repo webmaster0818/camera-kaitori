@@ -71,7 +71,7 @@ export const MIRRORLESS_LISTED: MirrorlessListed[] = [
     mirrorless: "あり",
     methods: "宅配買取・店頭買取・出張買取",
     note: "「ボディ単体・レンズ単体でもお買取りしております」。ただし「製造番号やシリアルナンバーが元々入っているカメラで、消えてしまっていたり、判別できない状態のものはお買取りができません」",
-    checked: "2026年10月23日",
+    checked: "2026年11月2日",
   },
   {
     slug: "janpara",
