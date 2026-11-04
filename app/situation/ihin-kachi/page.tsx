@@ -330,7 +330,7 @@ export default function IhinKachiPage() {
             <ul className="mt-3 space-y-2 text-[13px] leading-loose text-steel-700">
               <li>
                 <Link href="/kaitori/kitamura/" className="underline hover:text-vermilion">カメラのキタムラ</Link>
-                ：「元々製造番号（シリアルナンバー）があるのに消えてしまった、または、判別できないという場合は買い取ることが出来かねます」（2026年10月19日確認）
+                ：「元々製造番号（シリアルナンバー）があるのに消えてしまった、または、判別できないという場合は買い取ることが出来かねます」（2026年11月4日確認）
               </li>
               <li>
                 <Link href="/kaitori/daikokuya/" className="underline hover:text-vermilion">大黒屋</Link>
