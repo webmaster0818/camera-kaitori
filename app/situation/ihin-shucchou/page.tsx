@@ -412,7 +412,7 @@ export default function IhinShucchouPage() {
               ※ {fujiya.name}は、法人・プロユース向けページに「出張引取」の記載がありますが（出張料は「{fmt(fujiya.hiyou.shucchou)}」、{formatChecked(fujiya.confirmed_date)}確認）、個人向けの出張買取の記載ではないため一覧に含めていません。
             </p>
             <p>
-              ※ {rakuuru.name}は「{fmt(rakuuru.hiyou.shucchou)}」、{janpara.name}は「{fmt(janpara.hiyou.shucchou)}」（いずれも{formatChecked(rakuuru.confirmed_date)}確認）、{arrows.name}は「{fmt(arrows.hiyou.shucchou)}」（{formatChecked(arrows.confirmed_date)}確認）のため、一覧に含めていません。
+              ※ {rakuuru.name}は「{fmt(rakuuru.hiyou.shucchou)}」（{formatChecked(rakuuru.confirmed_date)}確認）、{janpara.name}は「{fmt(janpara.hiyou.shucchou)}」（{formatChecked(janpara.confirmed_date)}確認）、{arrows.name}は「{fmt(arrows.hiyou.shucchou)}」（{formatChecked(arrows.confirmed_date)}確認）のため、一覧に含めていません。
             </p>
             <p>
               ※ 一括査定・比較サービスは、出張・宅配・店頭の対応が紹介先の買取店によって異なるため、ここでは扱っていません。
