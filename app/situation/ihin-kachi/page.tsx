@@ -531,7 +531,7 @@ export default function IhinKachiPage() {
                 <Link href="/kaitori/hikakaku/" className="underline hover:text-vermilion">ヒカカク！</Link>
                 が「最大20社から一括査定」、
                 <Link href="/kaitori/minna-no-kaitori/" className="underline hover:text-vermilion">みんなの買取</Link>
-                が「最大10社の中から一番いい業者を選ぶだけ」（2026年10月19日確認）、
+                が「最大10社の中から一番いい業者を選ぶだけ」（2026年11月15日確認）、
                 <Link href="/kaitori/oikura/" className="underline hover:text-vermilion">おいくら</Link>
                 が複数の買取店から見積結果がメールで届く仕組みと記載しています（ヒカカク！は2026年10月30日、おいくらは2026年11月14日確認）。これらのサービス自体はカメラを買い取らず、実際の条件は紹介先の業者ごとに異なります。
               </li>
