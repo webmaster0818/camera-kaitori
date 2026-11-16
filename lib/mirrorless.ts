@@ -89,7 +89,7 @@ export const MIRRORLESS_LISTED: MirrorlessListed[] = [
     mirrorless: "あり",
     methods: "宅配買取・来店予約（店頭買取）。出張買取ページの対象品目にカメラの記載なし",
     note: "カメラの査定基準で「機能やボタンが正常に動作しない」などを「大幅な減額あり」、レンズの「カビ、バルサム切れ、ヒビ割れがある」を「買取していません」に区分",
-    checked: "2026年10月31日",
+    checked: "2026年11月16日",
   },
   {
     slug: "camera-takakuureru",
