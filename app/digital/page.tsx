@@ -6,11 +6,11 @@ import { fmt, formatChecked, getCategory, getCompany } from "@/lib/companies";
 import { SITE_NAME, SITE_URL, OPERATOR } from "@/lib/site";
 import { MIRRORLESS_LISTED } from "@/lib/mirrorless";
 
-const TITLE = "ミラーレス買取・デジタルカメラ買取｜掲載10社の対応・付属品で変わる条件・メーカー別の確認点【2026年10月更新】";
+const TITLE = "デジタル一眼・ミラーレス買取｜一眼レフを対象品目に明記する掲載8社・付属品の条件・相場の調べ方【2026年11月更新】";
 const DESC =
-  "ミラーレスカメラ・デジタルカメラの買取先を、掲載10社の公式記載で比較。ミラーレスを対象品目に明記する社、バッテリー・充電器なしは買取不可などの付属品条件、製造番号ラベルの扱い、メーカー別の確認点、相場の調べ方、返送料・入金を整理（2026年10月18日更新）。";
+  "デジタル一眼（一眼レフ・ミラーレス）の買取先を、自社で買い取る掲載10社の公式記載で比較。デジタル一眼レフを対象品目に明記する8社とその買取方法・キャンセル時の返送料、バッテリー・充電器なしは買取不可などの付属品条件、製造番号ラベルの扱い、相場の調べ方を整理（2026年11月18日更新）。";
 const PATH = "/digital/";
-const PAGE_UPDATED = "2026-10-18";
+const PAGE_UPDATED = "2026-11-18";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -28,6 +28,18 @@ const articleLd = {
   author: { "@type": "Organization", name: OPERATOR.name },
   publisher: { "@type": "Organization", name: SITE_NAME },
 };
+
+/** デジタル一眼レフの対象品目の記載（companies.json の target を各社公式の表記どおりに抜粋。確認日は companies.json の confirmed_date） */
+const DSLR_ROWS: { slug: string; word: string }[] = [
+  { slug: "uriel", word: "「ミラーレス一眼カメラ・デジタル一眼レフカメラ」" },
+  { slug: "arrows", word: "「デジタル一眼レフ・ミラーレス」" },
+  { slug: "kitamura", word: "「ミラーレス一眼・デジタル一眼レフ」" },
+  { slug: "fujiya", word: "「デジタルカメラ（ミラーレス・デジタル一眼レフ…）」" },
+  { slug: "daikokuya", word: "「ミラーレス一眼カメラ・デジタル一眼レフカメラ」" },
+  { slug: "janpara", word: "「デジタル一眼」" },
+  { slug: "rakuuru", word: "「デジタルカメラ・デジタル一眼レフ・ミラーレス一眼」" },
+  { slug: "camera-takakuureru", word: "「一眼レフカメラ／ミラーレス一眼カメラ」" },
+];
 
 /** 売る前のチェック（一般知識。金額は扱わない） */
 const CHECKLIST = [
@@ -71,6 +83,7 @@ const ROUTES: { h: string; links: { href: string; label: string }[] }[] = [
     links: [
       { href: "/digital/mirrorless/", label: "ミラーレスカメラ（型番・マウント・初期化）" },
       { href: "/digital/compact/", label: "コンパクトデジタルカメラ" },
+      { href: "/digital/video-camera/", label: "ビデオカメラ（対象品目に明記する掲載6社）" },
       { href: "/film/", label: "フィルムカメラ" },
       { href: "/old-lens/", label: "オールドレンズ・交換レンズ" },
     ],
@@ -116,7 +129,7 @@ export default function DigitalPage() {
     <CategoryHub
       cat={cat}
       kicker="DIGITAL CAMERA"
-      h1="ミラーレス買取・デジタルカメラ（デジカメ）買取｜掲載社の対応・付属品の条件・相場の調べ方"
+      h1="デジタル一眼・ミラーレス買取｜一眼レフ・デジカメを扱う掲載社の対応・付属品の条件・相場の調べ方"
       updated={PAGE_UPDATED}
       intro="デジタル一眼レフ・ミラーレスカメラは、新機種の登場により相場が変動しやすいカテゴリです。売却を決めた場合は、付属品を揃え、メモリーカードを抜いてデータを消去し、状態を正確に申告したうえで、送料・返送料・入金の条件を比較するのが基本的な流れです。本ページでは、デジタルカメラの売却前に確認しておくべき一般的な判断材料と、掲載サービスについて公式サイトで確認した条件をまとめています。買取価格は日々変動するため、当サイトでは金額を掲載しておりません。"
       points={[
@@ -222,6 +235,9 @@ export default function DigitalPage() {
           ミラーレスカメラの買取は、当サイト掲載の買取{MIRRORLESS_LISTED.length}社のうち{mlYes.length}社（{mlYes.map((m) => m.name).join("・")}）が、公式サイトの対象品目に「ミラーレス」を明記しています。残る{MIRRORLESS_LISTED.length - mlYes.length}社も「デジタルカメラ」「ボディ」などの表記で受け付けており、ミラーレスを受け付けないという記載ではありません（各社公式・2026年9月確認）。
         </p>
         <p className="mt-2 text-sm leading-loose text-steel-800">
+          デジタル一眼レフは、同じ掲載{MIRRORLESS_LISTED.length}社のうち{DSLR_ROWS.length}社が対象品目に「デジタル一眼レフ」「一眼レフカメラ」「デジタル一眼」と明記しています（下の表）。
+        </p>
+        <p className="mt-2 text-sm leading-loose text-steel-800">
           デジタルカメラ（デジタル一眼レフ・ミラーレスカメラ・コンパクトデジタルカメラ）は、型落ちや古い機種でも買取の対象となる場合があります。買取額は型番・状態・付属品・売却の時期によって決まるため、当サイトでは金額を掲載せず、相場の調べ方と業者ごとの条件を整理しています。
         </p>
         <p className="mt-2 text-sm leading-loose text-steel-800">
@@ -229,6 +245,45 @@ export default function DigitalPage() {
         </p>
       </div>
 
+
+      <section className="mt-12">
+        <h2 className="section-title mb-2">デジタル一眼（一眼レフ）買取：対象品目に明記する掲載{DSLR_ROWS.length}社</h2>
+        <p className="mb-5 max-w-3xl text-sm leading-loose text-steel-600">
+          自社でカメラを買い取る掲載{MIRRORLESS_LISTED.length}社のうち、公式サイトの対象品目に「デジタル一眼レフ」「一眼レフカメラ」「デジタル一眼」の表記があるのは次の{DSLR_ROWS.length}社です。残るカメラのナニワ（「デジタルカメラ」の表記）とカメラの買取屋さん（「ボディ」の表記）も、デジタル一眼を受け付けないという記載ではありません。買取方法とキャンセル時の返送料は、宅配で送る前に差が出やすい項目のため並べて載せています。
+        </p>
+        <div className="overflow-x-auto border border-chalk-line">
+          <table className="spec-table">
+            <thead>
+              <tr>
+                <th className="w-32 md:w-44">業者</th>
+                <th>対象品目の表記</th>
+                <th>買取方法</th>
+                <th>キャンセル時の返送料</th>
+              </tr>
+            </thead>
+            <tbody>
+              {DSLR_ROWS.map((r) => {
+                const c = getCompany(r.slug);
+                const ml = MIRRORLESS_LISTED.find((m) => m.slug === r.slug);
+                return (
+                  <tr key={r.slug}>
+                    <th>
+                      <Link href={`/kaitori/${c.slug}/`} className="underline underline-offset-4 hover:text-vermilion">
+                        {c.name}
+                      </Link>
+                      <span className="mt-1 block text-[11px] font-normal text-steel-500">{formatChecked(c.confirmed_date)}確認</span>
+                    </th>
+                    <td className="text-[13px]">{r.word}</td>
+                    <td className="text-[13px]">{ml ? ml.methods : fmt(c.methods)}</td>
+                    <td className="text-[13px]">{fmt(c.hiyou.hensou)}</td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-2 text-xs text-steel-500">※ 横にスクロールできます。表記は各社公式の対象品目の書き方を抜粋したもので、個別の機種の受付可否や金額を示すものではありません。ビデオカメラは<Link href="/digital/video-camera/" className="text-vermilion underline underline-offset-4">ビデオカメラ買取のページ</Link>で別に整理しています。</p>
+      </section>
 
       <section className="mt-12">
         <h2 className="section-title mb-2">ミラーレス買取：掲載{MIRRORLESS_LISTED.length}社の対応と買取方法（公式記載）</h2>

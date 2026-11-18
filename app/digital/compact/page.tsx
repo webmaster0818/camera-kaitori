@@ -623,6 +623,12 @@ export default function CompactDigitalPage() {
               </Link>
             </li>
             <li>
+              <Link href="/digital/video-camera/" className="block border border-chalk-line bg-chalk-card px-4 py-4 hover:border-vermilion">
+                <span className="font-display text-steel-900">ビデオカメラの買取</span>
+                <span className="mt-1 block text-xs text-steel-500">対象品目に明記する掲載6社と内蔵メモリーの扱い</span>
+              </Link>
+            </li>
+            <li>
               <Link href="/film/" className="block border border-chalk-line bg-chalk-card px-4 py-4 hover:border-vermilion">
                 <span className="font-display text-steel-900">フィルムカメラの買取</span>
                 <span className="mt-1 block text-xs text-steel-500">フィルムのコンパクトカメラが出てきた場合</span>
