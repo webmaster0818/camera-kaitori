@@ -147,6 +147,13 @@ export default async function KaitoriPage({
           {c.name}のサービス条件を、公式サイトの記載にもとづき一次確認しています（確認日: {formatChecked(c.confirmed_date)}）。
           サービス形態: {serviceTypeOf(c)}。対象: {fmt(c.target)}。買取価格は状態と時期により変動するため本ページには掲載せず、条件のみを整理しています。
         </p>
+        {c.target?.includes("ビデオカメラ") && (
+          <p className="mt-3 max-w-3xl text-sm leading-loose text-steel-600">
+            {c.name}は公式の対象品目に「ビデオカメラ」を明記しています。対象品目にビデオカメラを明記する掲載6社の買取方法・返送料と、売る前の確認（内蔵メモリーの消去・付属品）は
+            <Link href="/digital/video-camera/" className="underline decoration-vermilion underline-offset-4">ビデオカメラ買取のページ</Link>
+            で比較しています。
+          </p>
+        )}
 
         <section className="mt-10">
           <h2 className="section-title mb-5">主要な取引条件</h2>
