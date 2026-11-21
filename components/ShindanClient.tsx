@@ -57,7 +57,7 @@ const allKaitori: ResultCompany[] = [
   { name: "アローズ", slug: "arrows" },
 ];
 
-/** 宅配買取に対応する社だけ（ウリエルは公式のご利用ガイドに「現在は出張買取のみの対応になります。」と記載・2026年10月27日確認） */
+/** 宅配買取に対応する社だけ（ウリエルは公式のご利用ガイドに「現在は出張買取のみの対応になります。」と記載・2026年11月21日確認） */
 const takuhaiKaitori: ResultCompany[] = allKaitori.filter((c) => c.slug !== "uriel");
 
 /** 判定ロジック（全開示・このままの順で評価） */
