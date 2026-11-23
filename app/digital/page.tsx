@@ -249,7 +249,7 @@ export default function DigitalPage() {
       <section className="mt-12">
         <h2 className="section-title mb-2">デジタル一眼（一眼レフ）買取：対象品目に明記する掲載{DSLR_ROWS.length}社</h2>
         <p className="mb-5 max-w-3xl text-sm leading-loose text-steel-600">
-          自社でカメラを買い取る掲載{MIRRORLESS_LISTED.length}社のうち、公式サイトの対象品目に「デジタル一眼レフ」「一眼レフカメラ」「デジタル一眼」の表記があるのは次の{DSLR_ROWS.length}社です。残るカメラのナニワ（「デジタルカメラ」の表記）とカメラの買取屋さん（「ボディ」の表記）も、デジタル一眼を受け付けないという記載ではありません。買取方法とキャンセル時の返送料は、宅配で送る前に差が出やすい項目のため並べて載せています。
+          自社でカメラを買い取る掲載{MIRRORLESS_LISTED.length}社のうち、公式サイトの対象品目に「デジタル一眼レフ」「一眼レフカメラ」「デジタル一眼」の表記があるのは次の{DSLR_ROWS.length}社です。残るカメラのナニワ（「デジタルカメラ」の表記）とカメラの買取屋さん（「ボディ」の表記）も、デジタル一眼を受け付けないという記載ではありません。カメラのナニワは、よくある質問で買取可能なカメラの種類に「デジタル一眼レフ」を挙げ、無料WEB査定のカテゴリ選択にも「01.デジタル一眼レフ」があります（2026年11月23日確認）。買取方法とキャンセル時の返送料は、宅配で送る前に差が出やすい項目のため並べて載せています。
         </p>
         <div className="overflow-x-auto border border-chalk-line">
           <table className="spec-table">
