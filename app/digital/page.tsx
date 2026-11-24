@@ -62,7 +62,7 @@ const CONDITION_ROWS: { slug: string; point: string; text: string }[] = [
   { slug: "camera-takakuureru", point: "付属品・故障", text: "「購入時の箱や付属品は残っていることが望ましいですが、なくてもお買取できます」。「一部機能が使えないといった軽度の故障でしたら、買取価格がつく可能性があります」" },
   { slug: "uriel", point: "付属品・カビ", text: "「付属品がないカメラ」を「ご相談ください」の対象として掲載。メーカー別ページで「カビ・ホコリ・曇りの有無」を査定ポイントとして記載" },
   { slug: "janpara", point: "動作", text: "「基本的に通常正常動作品のみ買取対象となります」（店頭はバルク品や欠品のあるものも可と記載）" },
-  { slug: "camera-kaitoriyasan", point: "故障", text: "「壊れていても買取OK」「他店で断られてしまった壊れているカメラであっても、査定いたします」" },
+  { slug: "camera-kaitoriyasan", point: "故障", text: "「壊れていても査定OK」「他店で断られてしまった壊れているカメラであっても、査定いたします」" },
   { slug: "kitamura", point: "製造番号", text: "製造番号（シリアルナンバー）が「消えてしまった、または、判別できないという場合は買い取ることが出来かねます」" },
   { slug: "daikokuya", point: "製造番号・単体", text: "製造番号が消えている・判別できないカメラは買取不可。「ボディ単体・レンズ単体でもお買取りしております」" },
 ];
@@ -368,7 +368,7 @@ export default function DigitalPage() {
           </li>
           <li className="border border-chalk-line bg-chalk-card px-4 py-3">
             <strong className="text-steel-900">3. 動作品か故障品かで申込先を分ける。</strong>
-            じゃんぱらは「基本的に通常正常動作品のみ」、カメラ買取アローズはジャンク品を原則買取不可とする一方、カメラの買取屋さんは「壊れていても買取OK」、カメラ高く売れるドットコムは軽度の故障なら「買取価格がつく可能性があります」としています。故障品は
+            じゃんぱらは「基本的に通常正常動作品のみ」、カメラ買取アローズはジャンク品を原則買取不可とする一方、カメラの買取屋さんは「壊れていても査定OK」、カメラ高く売れるドットコムは軽度の故障なら「買取価格がつく可能性があります」としています。故障品は
             <Link href="/broken/" className="text-vermilion underline underline-offset-4">壊れたカメラの売却</Link>
             を参照してください。
           </li>
