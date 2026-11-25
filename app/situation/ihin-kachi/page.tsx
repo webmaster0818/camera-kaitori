@@ -378,7 +378,7 @@ export default function IhinKachiPage() {
               </li>
               <li>
                 <Link href="/kaitori/arrows/" className="underline hover:text-vermilion">カメラ買取アローズ</Link>
-                ：箱なしは可。ジャンク品・加工品・重度の付属品欠品（バッテリー・充電器がない商品）は買取不可と明記（2026年10月20日確認）
+                ：箱なしは可。ジャンク品・加工品・重度の付属品欠品（バッテリー・充電器がない商品）は買取不可と明記（2026年11月25日確認）
               </li>
             </ul>
             <p className="mt-3 text-xs text-steel-500">
