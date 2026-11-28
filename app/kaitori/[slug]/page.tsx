@@ -149,7 +149,7 @@ export default async function KaitoriPage({
         </p>
         {c.target?.includes("ビデオカメラ") && (
           <p className="mt-3 max-w-3xl text-sm leading-loose text-steel-600">
-            {c.name}は公式の対象品目に「ビデオカメラ」を明記しています。対象品目にビデオカメラを明記する掲載6社の買取方法・返送料と、売る前の確認（内蔵メモリーの消去・付属品）は
+            {c.name}は公式の対象品目に「ビデオカメラ」を明記しています。対象品目にビデオカメラを明記する掲載7社の買取方法・返送料と、売る前の確認（内蔵メモリーの消去・付属品）は
             <Link href="/digital/video-camera/" className="underline decoration-vermilion underline-offset-4">ビデオカメラ買取のページ</Link>
             で比較しています。
           </p>

@@ -334,7 +334,7 @@ export default function IhinKachiPage() {
               </li>
               <li>
                 <Link href="/kaitori/daikokuya/" className="underline hover:text-vermilion">大黒屋</Link>
-                ：「製造番号やシリアルナンバーが元々入っているカメラで、消えてしまっていたり、判別できない状態のものはお買取りができません」（2026年10月20日確認）
+                ：「製造番号やシリアルナンバーが元々入っているカメラで、消えてしまっていたり、判別できない状態のものはお買取りができません」（2026年11月28日確認）
               </li>
             </ul>
             <p className="mt-3 text-xs text-steel-500">
@@ -520,7 +520,7 @@ export default function IhinKachiPage() {
               </li>
               <li>
                 <Link href="/kaitori/daikokuya/" className="underline hover:text-vermilion">大黒屋</Link>
-                ：LINE査定・メール査定のメニューがあると記載（2026年10月20日確認）
+                ：LINE査定・メール査定のメニューがあると記載（2026年11月28日確認）
               </li>
               <li>
                 <Link href="/kaitori/uriel/" className="underline hover:text-vermilion">ウリエル</Link>
